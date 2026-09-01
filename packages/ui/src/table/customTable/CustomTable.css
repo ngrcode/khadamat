@@ -1,0 +1,290 @@
+/* style.css */
+.ant-table-header {
+  white-space: nowrap !important;
+  font-size: 12px !important;
+}
+/* .ant-table-thead{
+  min-width:200px !important
+} */
+
+.ant-table-thead{
+  white-space: nowrap !important;
+  font-size: 12px !important;
+}
+
+.ant-table-cell{
+  font-size: 12px !important;
+}
+
+/* استایل‌های جدول برای ردیف‌های یک در میان */
+.table-row-even {
+  background-color: var(--table-row-even-bg) !important;
+}
+
+.table-row-odd {
+  background-color: var(--table-row-odd-bg) !important;
+}
+
+/* رفع استایل‌های هاور */
+.table-row-even:hover td,
+.table-row-odd:hover td {
+  background-color: var(--ant-table-hover-bg) !important;
+  transition: background-color 0.2s ease;
+}
+
+/* اطمینان از اعمال استایل روی سلول‌ها */
+.ant-table-tbody > tr.table-row-even > td {
+  background-color: inherit;
+}
+
+.ant-table-tbody > tr.table-row-odd > td {
+  background-color: inherit;
+}
+
+/* CustomTable.css */
+
+.pagination-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 16px;
+  margin-top: 8px;
+}
+
+.pagination-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--app-card-bg);
+  padding: 8px 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.pagination-container:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.pagination-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid var(--table-border-color);
+  border-radius: 10px;
+  background: var(--app-card-bg);
+  color: rgb(var(--foreground-rgb));
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pagination-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.pagination-btn:hover:not(.disabled) {
+  border-color: var(--color-primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.3);
+}
+
+.pagination-btn:hover:not(.disabled)::before {
+  opacity: 1;
+}
+
+.pagination-btn:hover:not(.disabled)>* {
+  position: relative;
+  z-index: 1;
+}
+
+.pagination-btn.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  background: var(--app-surface-alt);
+}
+
+.pagination-btn:active:not(.disabled) {
+  transform: translateY(0);
+}
+
+.pagination-pages {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pagination-page-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  border: 1.5px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color: rgb(var(--foreground-rgb));
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pagination-page-btn:hover {
+  background: var(--ant-table-hover-bg);
+  border-color: var(--table-border-color);
+  color: var(--color-primary);
+}
+
+.pagination-page-btn.active {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(var(--color-primary-rgb), 0.4);
+  border-color: transparent;
+}
+
+.pagination-page-btn.active:hover {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  color: white;
+}
+
+.pagination-ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: #9ca3af;
+  font-size: 18px;
+  user-select: none;
+}
+
+.pagination-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: rgb(var(--muted-foreground-rgb));
+  background: var(--app-card-bg);
+  padding: 8px 20px;
+  border-radius: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.pagination-info-separator {
+  color: #d1d5db;
+  font-weight: 300;
+}
+
+/* استایل‌های جدول */
+.custom-table .ant-table {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.custom-table .ant-table-thead>tr>th {
+  background: var(--ant-table-thead-bg);
+  color: var(--ant-table-thead-color);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 14px 16px;
+  border: none;
+  text-align: center;
+}
+
+.custom-table .ant-table-tbody>tr>td {
+  padding: 12px 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--table-border-color);
+  transition: all 0.2s;
+}
+
+.custom-table .table-row-even {
+  background-color: var(--table-row-even-bg);
+}
+
+.custom-table .table-row-odd {
+  background-color: var(--table-row-odd-bg);
+}
+
+.custom-table .ant-table-tbody>tr:hover>td {
+  background-color: var(--ant-table-hover-bg) !important;
+  cursor: pointer;
+}
+
+.custom-table .ant-table-tbody>tr.table-row-even:hover>td {
+  background-color: var(--ant-table-hover-bg) !important;
+}
+
+/* شماره ردیف */
+.row-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.16) 0%, rgba(var(--color-accent-rgb), 0.14) 100%);
+  border-radius: 8px;
+  font-weight: 600;
+  color: var(--color-primary);
+  font-size: 13px;
+}
+
+/* Modal استایل‌های */
+.delete-modal-content,
+.activate-modal-content {
+  padding: 20px;
+  text-align: center;
+  font-size: 15px;
+  color: rgb(var(--foreground-rgb));
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pagination-container {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px 12px;
+  }
+
+  .pagination-page-btn {
+    min-width: 35px;
+    height: 35px;
+    font-size: 13px;
+  }
+
+  .pagination-info {
+    flex-direction: column;
+    gap: 4px;
+    font-size: 12px;
+  }
+}
+
+/* انیمیشن‌ها */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pagination-wrapper {
+  animation: fadeIn 0.3s ease;
+}

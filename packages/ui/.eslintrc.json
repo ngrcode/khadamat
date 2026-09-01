@@ -1,0 +1,49 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": { "ecmaVersion": 2022, "sourceType": "module", "ecmaFeatures": { "jsx": true } },
+  "overrides": [
+    {
+      "files": ["src/atoms/**/*.{ts,tsx}", "src/molecules/**/*.{ts,tsx}", "src/organisms/**/*.{ts,tsx}", "src/templates/**/*.{ts,tsx}"],
+      "rules": { "max-lines": ["error", { "max": 30, "skipBlankLines": false, "skipComments": false }] }
+    },
+    {
+      "files": ["src/atoms/**/*.{ts,tsx}"],
+      "rules": {
+        "no-restricted-imports": ["error", { "patterns": [
+          { "group": ["**/molecules", "**/molecules/**", "@repo/ui/molecules/**"], "message": "Atoms may only depend on tokens or external primitives." },
+          { "group": ["**/organisms", "**/organisms/**", "@repo/ui/organisms/**"], "message": "Atoms may not depend on organisms." },
+          { "group": ["**/templates", "**/templates/**", "@repo/ui/templates/**"], "message": "Atoms may not depend on templates." },
+          { "group": ["@/app/**", "@/features/**", "apps/**", "features/**", "@repo/ui"], "message": "Atomic UI may not depend on application code or its root barrel." }
+        ] }]
+      }
+    },
+    {
+      "files": ["src/molecules/**/*.{ts,tsx}"],
+      "rules": {
+        "no-restricted-imports": ["error", { "patterns": [
+          { "group": ["**/organisms", "**/organisms/**", "@repo/ui/organisms/**"], "message": "Molecules may not depend on organisms." },
+          { "group": ["**/templates", "**/templates/**", "@repo/ui/templates/**"], "message": "Molecules may not depend on templates." },
+          { "group": ["@/app/**", "@/features/**", "apps/**", "features/**", "@repo/ui"], "message": "Atomic UI may not depend on application code or its root barrel." }
+        ] }]
+      }
+    },
+    {
+      "files": ["src/organisms/**/*.{ts,tsx}"],
+      "rules": {
+        "no-restricted-imports": ["error", { "patterns": [
+          { "group": ["**/templates", "**/templates/**", "@repo/ui/templates/**"], "message": "Organisms may not depend on templates." },
+          { "group": ["@/app/**", "@/features/**", "apps/**", "features/**", "@repo/ui"], "message": "Atomic UI may not depend on application code or its root barrel." }
+        ] }]
+      }
+    },
+    {
+      "files": ["src/templates/**/*.{ts,tsx}"],
+      "rules": {
+        "no-restricted-imports": ["error", { "patterns": [
+          { "group": ["@/app/**", "@/features/**", "apps/**", "features/**", "@repo/ui"], "message": "Atomic UI may not depend on application code or its root barrel." }
+        ] }]
+      }
+    }
+  ]
+}

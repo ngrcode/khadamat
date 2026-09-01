@@ -1,0 +1,30 @@
+{
+  "extends": "next/core-web-vitals",
+  "overrides": [
+    {
+      "files": ["src/features/atm/**/*.tsx", "src/app/dashboard/atms/**/*.{ts,tsx}"],
+      "rules": {
+        "max-lines": [
+          "error",
+          { "max": 30, "skipBlankLines": false, "skipComments": false }
+        ]
+      }
+    },
+    {
+      "files": ["src/features/atm/**/*.{ts,tsx}"],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              {
+                "group": ["**/app/**", "@/features/**"],
+                "message": "Features must not depend on routes or feature barrels."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

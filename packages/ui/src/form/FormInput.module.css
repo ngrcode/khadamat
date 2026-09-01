@@ -1,0 +1,4 @@
+.buttons,
+.buttons :global(.ant-space-item) {
+  width: 100%;
+}

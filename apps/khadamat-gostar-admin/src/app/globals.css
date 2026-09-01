@@ -1,0 +1,941 @@
+@import "@repo/ui-styles/globals.css";
+@import "./portal-theme.css";
+
+.admin-login-page,
+.admin-login-page .ant-typography,
+.admin-login-page button,
+.admin-login-page input,
+.admin-login-page .ant-segmented {
+  font-family: var(--app-font-family) !important;
+}
+
+.admin-login-page {
+  font-size: var(--app-font-size);
+  line-height: 1.65;
+}
+
+.admin-login-page .login-auth-input.ant-input,
+.admin-login-page .login-auth-input.ant-input-affix-wrapper {
+  height: 48px !important;
+  min-height: 48px !important;
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+.admin-login-page .login-auth-input.ant-input-affix-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  padding-block: 0 !important;
+}
+
+.admin-login-page .login-auth-input.ant-input-affix-wrapper input.ant-input {
+  align-self: stretch;
+  height: 46px !important;
+  min-height: 0 !important;
+  padding-block: 0 !important;
+  direction: rtl !important;
+  text-align: right !important;
+  line-height: 46px !important;
+}
+
+.admin-login-page .login-auth-input.ant-input::placeholder,
+.admin-login-page .login-auth-input.ant-input-affix-wrapper input::placeholder {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+.admin-login-page .login-auth-input .ant-input-prefix,
+.admin-login-page .login-auth-input .ant-input-suffix {
+  display: inline-flex !important;
+  height: 100%;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+}
+
+@media (max-height: 760px) and (min-width: 1024px) {
+  .admin-login-page .admin-login-visual {
+    min-height: 570px !important;
+  }
+}
+
+.admin-appearance-trigger {
+  border: 0;
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.admin-appearance-trigger:hover {
+  color: var(--color-primary);
+  background: var(--portal-soft-hover);
+  transform: rotate(10deg);
+}
+
+.admin-language-trigger {
+  width: auto;
+  min-width: 44px;
+  border: 0;
+  cursor: pointer;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.admin-language-trigger:hover {
+  color: var(--color-primary);
+  background: var(--portal-soft-hover);
+}
+
+.admin-language-code {
+  min-width: 18px;
+  margin-inline-start: 5px;
+  font-size: 10px;
+  font-weight: 850;
+  line-height: 1;
+}
+
+.admin-appearance-section,
+.admin-appearance-preview {
+  padding: 16px;
+  border: 1px solid var(--portal-card-border);
+  border-radius: var(--portal-radius);
+  background: var(--portal-card-bg);
+  color: var(--portal-ink);
+  box-shadow: var(--portal-shadow);
+}
+
+.admin-font-option {
+  position: relative;
+  min-height: 68px;
+  padding: 12px;
+  border: 1px solid var(--portal-card-border);
+  border-radius: 12px;
+  background: var(--portal-card-bg);
+  color: var(--portal-ink);
+  text-align: right;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.admin-font-option:hover,
+.admin-font-option.is-selected {
+  border-color: var(--color-primary);
+  background: var(--portal-soft);
+  transform: translateY(-1px);
+}
+
+.admin-font-option-check {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: grid;
+  width: 20px;
+  height: 20px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 10px;
+}
+
+.admin-sidebar .ant-menu-item-selected {
+  background: var(--brand-gradient) !important;
+  color: var(--portal-on-brand, #fff) !important;
+  border-inline-end: none !important;
+}
+
+.admin-sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--portal-card-border, rgba(58, 21, 113, 0.1));
+}
+
+.admin-sidebar-brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  color: var(--portal-on-brand, #fff);
+  background: var(--brand-gradient);
+  box-shadow: var(--portal-shadow);
+}
+
+.admin-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+  padding: 0 24px;
+  background: var(--ant-layout-header);
+  border-bottom: 1px solid var(--portal-card-border, rgba(58, 21, 113, 0.1));
+  color: var(--portal-ink, #0f172a);
+}
+
+.admin-header-logout {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  background: transparent;
+  color: var(--portal-muted, #475569);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.admin-header-logout:hover {
+  color: var(--color-accent);
+}
+
+/* Keep the admin dark theme visually identical to the web dashboard tokens. */
+body.dark .portal-dashboard,
+html[data-theme='dark'] .portal-dashboard {
+  background:
+    radial-gradient(circle at 15% 0%, rgba(var(--color-primary-rgb), 0.14), transparent 34%),
+    radial-gradient(circle at 88% 12%, rgba(var(--color-accent-rgb), 0.08), transparent 28%),
+    rgb(var(--background-end-rgb)) !important;
+  color: rgb(var(--foreground-rgb));
+}
+
+body.dark .portal-topbar,
+html[data-theme='dark'] .portal-topbar {
+  background: var(--ant-layout-header) !important;
+  border-color: var(--app-card-border) !important;
+  color: rgb(var(--foreground-rgb)) !important;
+  box-shadow: var(--glass-shadow) !important;
+}
+
+body.dark .portal-card,
+body.dark .portal-profile-card,
+body.dark .admin-card,
+body.dark .admin-appearance-section,
+body.dark .admin-appearance-preview,
+html[data-theme='dark'] .portal-card,
+html[data-theme='dark'] .portal-profile-card,
+html[data-theme='dark'] .admin-card,
+html[data-theme='dark'] .admin-appearance-section,
+html[data-theme='dark'] .admin-appearance-preview {
+  background: var(--app-card-bg) !important;
+  border-color: var(--app-card-border) !important;
+  color: rgb(var(--foreground-rgb)) !important;
+  box-shadow: var(--glass-shadow) !important;
+}
+
+body.dark .portal-control-group,
+html[data-theme='dark'] .portal-control-group {
+  background: var(--app-header-control-bg) !important;
+  border-color: var(--app-card-border) !important;
+  color: var(--app-header-control-color) !important;
+}
+
+body.dark .portal-quick-grid,
+html[data-theme='dark'] .portal-quick-grid {
+  background: rgba(var(--color-primary-rgb), 0.1) !important;
+  border-color: rgba(var(--color-primary-rgb), 0.2) !important;
+}
+
+body.dark .portal-quick-action,
+html[data-theme='dark'] .portal-quick-action {
+  color: rgb(var(--foreground-rgb)) !important;
+}
+
+body.dark .portal-message-bubble,
+body.dark .portal-bulletin-item,
+html[data-theme='dark'] .portal-message-bubble,
+html[data-theme='dark'] .portal-bulletin-item {
+  background: rgba(var(--color-primary-rgb), 0.08) !important;
+  border-color: var(--app-card-border) !important;
+}
+
+body.dark .admin-font-option,
+html[data-theme='dark'] .admin-font-option {
+  background: var(--app-surface) !important;
+  border-color: var(--app-card-border) !important;
+  color: rgb(var(--foreground-rgb)) !important;
+}
+
+body.dark .admin-font-option:hover,
+body.dark .admin-font-option.is-selected,
+html[data-theme='dark'] .admin-font-option:hover,
+html[data-theme='dark'] .admin-font-option.is-selected {
+  background: rgba(var(--color-primary-rgb), 0.16) !important;
+  border-color: var(--color-primary) !important;
+}
+
+body.dark .admin-header-bar,
+html[data-theme='dark'] .admin-header-bar {
+  background: var(--ant-layout-header) !important;
+  border-color: var(--app-card-border) !important;
+  color: rgb(var(--foreground-rgb)) !important;
+}
+
+/* Polished modal system for the shared web-like dark theme. */
+body.dark .ant-modal-mask,
+html[data-theme='dark'] .ant-modal-mask {
+  background: rgba(3, 6, 15, 0.72) !important;
+  backdrop-filter: blur(6px);
+}
+
+body.dark .portal-request-modal .ant-modal-content,
+html[data-theme='dark'] .portal-request-modal .ant-modal-content {
+  overflow: hidden;
+  padding: 0 !important;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.25) !important;
+  border-radius: calc(var(--portal-radius) + 4px) !important;
+  background:
+    radial-gradient(circle at 100% 0, rgba(var(--color-primary-rgb), 0.16), transparent 34%),
+    var(--app-card-bg) !important;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.52) !important;
+}
+
+body.dark .portal-request-modal .ant-modal-header,
+html[data-theme='dark'] .portal-request-modal .ant-modal-header {
+  margin: 0 !important;
+  padding: 18px 22px !important;
+  border-bottom: 1px solid var(--app-card-border) !important;
+  background: linear-gradient(100deg, rgba(var(--color-primary-rgb), 0.17), rgba(var(--color-accent-rgb), 0.07)) !important;
+}
+
+body.dark .portal-request-modal .ant-modal-body,
+html[data-theme='dark'] .portal-request-modal .ant-modal-body {
+  max-height: min(74vh, 760px);
+  overflow-y: auto;
+  padding: 22px !important;
+  color: rgb(var(--foreground-rgb)) !important;
+  scrollbar-color: rgba(var(--color-primary-rgb), 0.45) transparent;
+  scrollbar-width: thin;
+}
+
+body.dark .portal-request-modal .ant-modal-close,
+html[data-theme='dark'] .portal-request-modal .ant-modal-close {
+  top: 17px;
+  inset-inline-end: 18px;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid var(--app-card-border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgb(var(--foreground-rgb));
+}
+
+body.dark .portal-request-modal .ant-modal-close:hover,
+html[data-theme='dark'] .portal-request-modal .ant-modal-close:hover {
+  background: rgba(var(--color-accent-rgb), 0.16);
+  color: var(--brand-accent-300);
+}
+
+.portal-request-modal .portal-modal-icon {
+  display: inline-grid;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--brand-gradient) !important;
+  color: #fff !important;
+  box-shadow: 0 8px 20px rgba(var(--color-primary-rgb), 0.25);
+}
+
+.portal-request-modal .portal-modal-icon .anticon {
+  color: #fff !important;
+}
+
+body.dark .portal-request-modal .portal-modal-title .ant-typography,
+body.dark .portal-request-modal .portal-modal-title [class*='text-slate'],
+html[data-theme='dark'] .portal-request-modal .portal-modal-title .ant-typography,
+html[data-theme='dark'] .portal-request-modal .portal-modal-title [class*='text-slate'] {
+  color: rgb(var(--foreground-rgb)) !important;
+}
+
+body.dark .portal-request-modal .portal-modal-title .ant-typography-secondary,
+body.dark .portal-request-modal .portal-modal-title .\!text-slate-500,
+html[data-theme='dark'] .portal-request-modal .portal-modal-title .ant-typography-secondary,
+html[data-theme='dark'] .portal-request-modal .portal-modal-title .\!text-slate-500 {
+  color: rgb(var(--muted-foreground-rgb)) !important;
+}
+
+body.dark .portal-request-modal [class*='bg-white'],
+body.dark .portal-request-modal [class*='bg-slate-50'],
+html[data-theme='dark'] .portal-request-modal [class*='bg-white'],
+html[data-theme='dark'] .portal-request-modal [class*='bg-slate-50'] {
+  background: var(--app-surface) !important;
+}
+
+body.dark .portal-request-modal [class*='border-slate-200'],
+html[data-theme='dark'] .portal-request-modal [class*='border-slate-200'] {
+  border-color: var(--app-card-border) !important;
+}
+
+body.dark .portal-request-modal [class*='text-slate-800'],
+body.dark .portal-request-modal [class*='text-slate-700'],
+body.dark .portal-request-modal [class*='text-slate-600'],
+html[data-theme='dark'] .portal-request-modal [class*='text-slate-800'],
+html[data-theme='dark'] .portal-request-modal [class*='text-slate-700'],
+html[data-theme='dark'] .portal-request-modal [class*='text-slate-600'] {
+  color: rgb(var(--foreground-rgb)) !important;
+}
+
+body.dark .portal-request-modal [class*='text-slate-500'],
+body.dark .portal-request-modal [class*='text-slate-400'],
+html[data-theme='dark'] .portal-request-modal [class*='text-slate-500'],
+html[data-theme='dark'] .portal-request-modal [class*='text-slate-400'] {
+  color: rgb(var(--muted-foreground-rgb)) !important;
+}
+
+body.dark .portal-request-modal [class*='bg-[#eaf3ff]'],
+html[data-theme='dark'] .portal-request-modal [class*='bg-[#eaf3ff]'] {
+  background: rgba(var(--color-primary-rgb), 0.18) !important;
+  color: var(--brand-200) !important;
+}
+
+body.dark .portal-request-modal .ant-input,
+body.dark .portal-request-modal .ant-input-affix-wrapper,
+body.dark .portal-request-modal .ant-select-selector,
+body.dark .portal-request-modal .ant-picker,
+body.dark .portal-request-modal textarea,
+html[data-theme='dark'] .portal-request-modal .ant-input,
+html[data-theme='dark'] .portal-request-modal .ant-input-affix-wrapper,
+html[data-theme='dark'] .portal-request-modal .ant-select-selector,
+html[data-theme='dark'] .portal-request-modal .ant-picker,
+html[data-theme='dark'] .portal-request-modal textarea {
+  border-color: var(--app-card-border) !important;
+  background: var(--app-surface) !important;
+  color: rgb(var(--foreground-rgb)) !important;
+  box-shadow: none !important;
+}
+
+body.dark .portal-request-modal .ant-input:hover,
+body.dark .portal-request-modal .ant-input-affix-wrapper:hover,
+body.dark .portal-request-modal .ant-select-selector:hover,
+body.dark .portal-request-modal .ant-picker:hover,
+html[data-theme='dark'] .portal-request-modal .ant-input:hover,
+html[data-theme='dark'] .portal-request-modal .ant-input-affix-wrapper:hover,
+html[data-theme='dark'] .portal-request-modal .ant-select-selector:hover,
+html[data-theme='dark'] .portal-request-modal .ant-picker:hover {
+  border-color: rgba(var(--color-primary-rgb), 0.62) !important;
+}
+
+body.dark .portal-request-modal .ant-form-item-label > label,
+html[data-theme='dark'] .portal-request-modal .ant-form-item-label > label {
+  color: rgb(var(--foreground-rgb)) !important;
+  font-weight: 650;
+}
+
+body.dark .portal-request-modal .portal-modal-actions .ant-btn:first-child,
+html[data-theme='dark'] .portal-request-modal .portal-modal-actions .ant-btn:first-child {
+  border-color: var(--app-card-border) !important;
+  background: var(--app-surface) !important;
+  color: rgb(var(--foreground-rgb)) !important;
+}
+
+.portal-request-modal .portal-modal-actions .ant-btn:last-child {
+  border: 0 !important;
+  background: var(--brand-gradient) !important;
+  color: #fff !important;
+  box-shadow: 0 10px 22px rgba(var(--color-primary-rgb), 0.24) !important;
+}
+
+/* Accessible, theme-aware buttons in admin dark mode. */
+body.dark .portal-dashboard .ant-btn-default,
+body.dark .portal-request-modal .ant-btn-default,
+body.dark .ant-drawer .ant-btn-default,
+html[data-theme='dark'] .portal-dashboard .ant-btn-default,
+html[data-theme='dark'] .portal-request-modal .ant-btn-default,
+html[data-theme='dark'] .ant-drawer .ant-btn-default {
+  border-color: rgba(var(--color-primary-rgb), 0.32) !important;
+  background: rgba(var(--color-primary-rgb), 0.1) !important;
+  color: var(--brand-200) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+}
+
+body.dark .portal-dashboard .ant-btn-default:hover,
+body.dark .portal-request-modal .ant-btn-default:hover,
+body.dark .ant-drawer .ant-btn-default:hover,
+html[data-theme='dark'] .portal-dashboard .ant-btn-default:hover,
+html[data-theme='dark'] .portal-request-modal .ant-btn-default:hover,
+html[data-theme='dark'] .ant-drawer .ant-btn-default:hover {
+  border-color: var(--brand-300) !important;
+  background: rgba(var(--color-primary-rgb), 0.2) !important;
+  color: var(--brand-100) !important;
+  box-shadow: 0 7px 18px rgba(var(--color-primary-rgb), 0.16) !important;
+  transform: translateY(-1px);
+}
+
+body.dark .portal-dashboard .ant-btn-primary,
+body.dark .portal-request-modal .ant-btn-primary,
+body.dark .ant-drawer .ant-btn-primary,
+html[data-theme='dark'] .portal-dashboard .ant-btn-primary,
+html[data-theme='dark'] .portal-request-modal .ant-btn-primary,
+html[data-theme='dark'] .ant-drawer .ant-btn-primary {
+  border-color: transparent !important;
+  background: var(--brand-gradient) !important;
+  color: #fff !important;
+  box-shadow: 0 9px 22px rgba(var(--color-primary-rgb), 0.28) !important;
+}
+
+body.dark .portal-dashboard .ant-btn-primary:hover,
+body.dark .portal-request-modal .ant-btn-primary:hover,
+body.dark .ant-drawer .ant-btn-primary:hover,
+html[data-theme='dark'] .portal-dashboard .ant-btn-primary:hover,
+html[data-theme='dark'] .portal-request-modal .ant-btn-primary:hover,
+html[data-theme='dark'] .ant-drawer .ant-btn-primary:hover {
+  border-color: rgba(var(--color-accent-rgb), 0.55) !important;
+  background: linear-gradient(135deg, var(--brand-400), var(--brand-accent-500)) !important;
+  color: #fff !important;
+  box-shadow: 0 12px 28px rgba(var(--color-accent-rgb), 0.25) !important;
+  filter: brightness(1.09);
+  transform: translateY(-1px);
+}
+
+body.dark .portal-dashboard .ant-btn-dangerous,
+body.dark .portal-request-modal .ant-btn-dangerous,
+body.dark .ant-drawer .ant-btn-dangerous,
+html[data-theme='dark'] .portal-dashboard .ant-btn-dangerous,
+html[data-theme='dark'] .portal-request-modal .ant-btn-dangerous,
+html[data-theme='dark'] .ant-drawer .ant-btn-dangerous {
+  border-color: rgba(248, 113, 113, 0.34) !important;
+  background: rgba(127, 29, 29, 0.2) !important;
+  color: #fca5a5 !important;
+}
+
+body.dark .portal-dashboard .ant-btn-dangerous:hover,
+body.dark .portal-request-modal .ant-btn-dangerous:hover,
+body.dark .ant-drawer .ant-btn-dangerous:hover,
+html[data-theme='dark'] .portal-dashboard .ant-btn-dangerous:hover,
+html[data-theme='dark'] .portal-request-modal .ant-btn-dangerous:hover,
+html[data-theme='dark'] .ant-drawer .ant-btn-dangerous:hover {
+  border-color: #f87171 !important;
+  background: rgba(153, 27, 27, 0.42) !important;
+  color: #fff !important;
+}
+
+body.dark .portal-dashboard .ant-btn:focus-visible,
+body.dark .portal-request-modal .ant-btn:focus-visible,
+body.dark .ant-drawer .ant-btn:focus-visible,
+html[data-theme='dark'] .portal-dashboard .ant-btn:focus-visible,
+html[data-theme='dark'] .portal-request-modal .ant-btn:focus-visible,
+html[data-theme='dark'] .ant-drawer .ant-btn:focus-visible {
+  outline: 3px solid rgba(var(--color-accent-rgb), 0.34) !important;
+  outline-offset: 2px;
+}
+
+body.dark .portal-dashboard .ant-btn:disabled,
+body.dark .portal-request-modal .ant-btn:disabled,
+body.dark .ant-drawer .ant-btn:disabled,
+html[data-theme='dark'] .portal-dashboard .ant-btn:disabled,
+html[data-theme='dark'] .portal-request-modal .ant-btn:disabled,
+html[data-theme='dark'] .ant-drawer .ant-btn:disabled {
+  border-color: rgba(148, 163, 184, 0.12) !important;
+  background: rgba(148, 163, 184, 0.08) !important;
+  color: rgba(203, 213, 225, 0.42) !important;
+  box-shadow: none !important;
+  filter: none;
+  transform: none;
+  cursor: not-allowed;
+}
+
+body.dark .portal-request-modal .ant-btn .anticon,
+body.dark .portal-dashboard .ant-btn .anticon,
+html[data-theme='dark'] .portal-request-modal .ant-btn .anticon,
+html[data-theme='dark'] .portal-dashboard .ant-btn .anticon {
+  color: currentColor !important;
+}
+
+body.dark .portal-dashboard .ant-btn:not(:disabled):active,
+body.dark .portal-request-modal .ant-btn:not(:disabled):active,
+body.dark .ant-drawer .ant-btn:not(:disabled):active,
+html[data-theme='dark'] .portal-dashboard .ant-btn:not(:disabled):active,
+html[data-theme='dark'] .portal-request-modal .ant-btn:not(:disabled):active,
+html[data-theme='dark'] .ant-drawer .ant-btn:not(:disabled):active {
+  filter: brightness(0.92);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.24) !important;
+  transform: translateY(0) scale(0.98);
+}
+
+/* Consistent hover feedback in both light and dark modes. */
+.portal-dashboard .ant-btn,
+.portal-request-modal .ant-btn,
+.ant-drawer .ant-btn,
+.portal-control-icon,
+.portal-show-all,
+.portal-more-link,
+.portal-back-btn,
+.portal-quick-action,
+.portal-logout-btn,
+.admin-font-option {
+  transition:
+    color 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease,
+    transform 0.18s ease !important;
+}
+
+.portal-dashboard .ant-btn-default:not(:disabled):hover,
+.portal-request-modal .ant-btn-default:not(:disabled):hover,
+.ant-drawer .ant-btn-default:not(:disabled):hover {
+  border-color: rgba(var(--color-primary-rgb), 0.52) !important;
+  background: rgba(var(--color-primary-rgb), 0.09) !important;
+  color: var(--color-primary) !important;
+  box-shadow: 0 8px 20px rgba(var(--color-primary-rgb), 0.13) !important;
+  transform: translateY(-1px);
+}
+
+.portal-dashboard .ant-btn-primary:not(:disabled):hover,
+.portal-request-modal .ant-btn-primary:not(:disabled):hover,
+.ant-drawer .ant-btn-primary:not(:disabled):hover {
+  border-color: rgba(var(--color-accent-rgb), 0.45) !important;
+  background: linear-gradient(135deg, var(--brand-400), var(--brand-accent-500)) !important;
+  color: #fff !important;
+  box-shadow: 0 11px 26px rgba(var(--color-primary-rgb), 0.24) !important;
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+.portal-dashboard .ant-btn-text:not(:disabled):hover,
+.portal-request-modal .ant-btn-text:not(:disabled):hover,
+.ant-drawer .ant-btn-text:not(:disabled):hover {
+  background: rgba(var(--color-primary-rgb), 0.1) !important;
+  color: var(--color-primary) !important;
+}
+
+.portal-dashboard .ant-btn-dangerous:not(:disabled):hover,
+.portal-request-modal .ant-btn-dangerous:not(:disabled):hover,
+.ant-drawer .ant-btn-dangerous:not(:disabled):hover {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.12) !important;
+  color: #dc2626 !important;
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.14) !important;
+  transform: translateY(-1px);
+}
+
+.portal-control-icon:not(:disabled):hover,
+.portal-show-all:not(:disabled):hover,
+.portal-more-link:not(:disabled):hover,
+.portal-back-btn:not(:disabled):hover {
+  background: rgba(var(--color-primary-rgb), 0.11) !important;
+  color: var(--color-primary) !important;
+  box-shadow: 0 6px 16px rgba(var(--color-primary-rgb), 0.12);
+  transform: translateY(-1px);
+}
+
+.portal-show-all,
+.portal-more-link,
+.portal-back-btn {
+  border-radius: 9px;
+  padding: 5px 8px;
+}
+
+.portal-quick-action:not(:disabled):hover {
+  border-color: rgba(var(--color-primary-rgb), 0.36) !important;
+  background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.12), rgba(var(--color-accent-rgb), 0.06)) !important;
+  box-shadow: 0 10px 24px rgba(var(--color-primary-rgb), 0.13) !important;
+  transform: translateY(-2px);
+}
+
+.portal-logout-btn:not(:disabled):hover {
+  border-color: rgba(239, 68, 68, 0.42) !important;
+  background: rgba(239, 68, 68, 0.12) !important;
+  color: #dc2626 !important;
+  box-shadow: 0 8px 20px rgba(239, 68, 68, 0.13);
+  transform: translateY(-1px);
+}
+
+body.dark .portal-logout-btn:not(:disabled):hover,
+html[data-theme='dark'] .portal-logout-btn:not(:disabled):hover {
+  border-color: rgba(248, 113, 113, 0.52) !important;
+  background: rgba(153, 27, 27, 0.42) !important;
+  color: #fff !important;
+}
+
+.portal-dashboard button:disabled,
+.portal-request-modal button:disabled,
+.ant-drawer button:disabled {
+  transform: none !important;
+  box-shadow: none !important;
+  cursor: not-allowed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portal-dashboard button,
+  .portal-request-modal button,
+  .ant-drawer button {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+.admin-card {
+  border-radius: 12px;
+  border: 1px solid var(--portal-card-border, rgba(58, 21, 113, 0.08));
+  background: var(--portal-card-bg, #fff);
+  box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.05);
+  color: var(--portal-ink, #0f172a);
+}
+
+.payroll-modal-form {
+  align-items: start;
+}
+
+.payroll-slip-result {
+  overflow-x: auto;
+}
+
+.payroll-slip-wrap {
+  display: flex;
+  width: 100%;
+  min-width: 900px;
+  flex-direction: column;
+  direction: rtl;
+  color: #111827;
+  font-family: var(--app-font-family, "IranSans", Arial, sans-serif);
+}
+
+.payroll-slip-export {
+  width: 100%;
+  background: #fff;
+}
+
+.payroll-slip-pdf-button {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-end;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 2px;
+  background: #128747;
+  color: #fff;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.payroll-slip-page-title {
+  margin: 10px 0 22px;
+  text-align: center;
+  color: #1f2937;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+.payroll-slip-sheet {
+  width: min(100%, 980px);
+  margin: 0 auto;
+  border: 2px solid #222;
+  background: #fff;
+}
+
+.payroll-slip-header {
+  padding: 10px 24px 16px;
+  text-align: center;
+}
+
+.payroll-slip-logo {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 8px;
+  color: var(--color-primary);
+  font-weight: 900;
+}
+
+.payroll-slip-logo-diamond,
+.payroll-slip-logo::before,
+.payroll-slip-logo::after {
+  position: absolute;
+  inset: 8px;
+  content: "";
+  border: 5px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.payroll-slip-logo::before {
+  inset: 16px 3px;
+  border-color: #9ca3af;
+  border-width: 4px;
+}
+
+.payroll-slip-logo::after {
+  inset: 3px 16px;
+  border-width: 4px;
+}
+
+.payroll-slip-logo-box {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.payroll-slip-company {
+  margin-bottom: 12px;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.payroll-slip-personnel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 22px;
+  text-align: right;
+}
+
+.payroll-slip-info-line {
+  display: flex;
+  justify-content: flex-start;
+  gap: 6px;
+  min-height: 24px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.75;
+}
+
+.payroll-slip-info-line strong {
+  font-weight: 900;
+}
+
+.payroll-slip-table,
+.payroll-slip-totals,
+.payroll-slip-payable {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  direction: rtl;
+}
+
+.payroll-slip-table {
+  border-top: 2px solid #111;
+}
+
+.payroll-slip-column {
+  min-height: 500px;
+  border-left: 2px solid #111;
+}
+
+.payroll-slip-column:last-child {
+  border-left: 0;
+}
+
+.payroll-slip-column-title {
+  height: 34px;
+  border-bottom: 1px solid #111;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 900;
+  line-height: 34px;
+}
+
+.payroll-slip-column-body {
+  padding: 6px 8px 10px;
+}
+
+.payroll-slip-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  min-height: 32px;
+  color: #111827;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.payroll-slip-row-title {
+  min-width: 0;
+  text-align: right;
+}
+
+.payroll-slip-row-value {
+  min-width: 84px;
+  direction: ltr;
+  text-align: left;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.payroll-slip-totals,
+.payroll-slip-payable {
+  border-top: 2px solid #111;
+}
+
+.payroll-slip-totals > div,
+.payroll-slip-payable > div {
+  min-height: 34px;
+  border-left: 2px solid #111;
+  padding: 7px 10px;
+  font-size: 13px;
+  font-weight: 900;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.payroll-slip-totals > div:last-child,
+.payroll-slip-payable > div:last-child {
+  border-left: 0;
+}
+
+.payroll-slip-payable > div:nth-child(2) {
+  grid-column: 2 / 4;
+}
+
+.payroll-slip-payable > div:nth-child(3) {
+  display: none;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .payroll-slip-wrap,
+  .payroll-slip-wrap * {
+    visibility: visible;
+  }
+
+  .payroll-slip-wrap {
+    position: absolute;
+    inset: 20px;
+    min-width: 0;
+  }
+
+  .payroll-slip-pdf-button {
+    display: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .portal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portal-messages-card {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .portal-service-page {
+    padding: 16px;
+  }
+
+  .portal-form-grid,
+  .portal-modal-actions {
+    grid-template-columns: 1fr;
+  }
+}

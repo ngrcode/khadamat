@@ -1,0 +1,18 @@
+.carouselContainer {
+  width: 100%;
+  max-width: 1800px;
+  margin: 0 auto;
+  perspective: 1000px; /* برای افکت 3D */
+}
+
+.swiperSlide {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.circularImage {
+  border-radius: 80%; /* تصویر را کروی می‌کند */
+
+  transition: transform 0.3s ease-in-out;
+}
+
+

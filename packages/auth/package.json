@@ -1,0 +1,23 @@
+{
+  "name": "@repo/auth",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./store": "./src/store.ts",
+    "./react": "./src/react/AuthProvider.tsx",
+    "./middleware": "./src/middleware/index.ts",
+    "./server/logout": "./src/server/logout.ts",
+    "./storage": "./src/storage/localStorage.ts",
+    "./cookie-client": "./src/storage/cookie-client.ts",
+    "./cookie-server": "./src/storage/cookie-server.ts"
+  },
+  "dependencies": {
+    "js-cookie": "^3.0.5",
+    "zustand": "^5.0.11"
+  },
+  "peerDependencies": {
+    "next": "^16.3.3",
+    "react": "^18"
+  }
+}

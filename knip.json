@@ -1,0 +1,32 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "workspaces": {
+    "apps/web": {
+      "entry": [
+        "src/app/**/*.{ts,tsx}",
+        "src/proxy.ts",
+        "next.config.mjs",
+        "vitest.config.ts",
+        "playwright.config.ts"
+      ],
+      "project": ["src/**/*.{ts,tsx}", "tests/**/*.{ts,tsx,mjs}"],
+      "ignoreDependencies": []
+    },
+    "apps/khadamat-gostar-admin": {
+      "entry": [
+        "src/app/**/*.{ts,tsx}",
+        "src/proxy.ts",
+        "next.config.mjs",
+        "vitest.config.ts",
+        "playwright.config.ts"
+      ],
+      "project": ["src/**/*.{ts,tsx}", "tests/**/*.{ts,tsx,mjs}"],
+      "ignoreDependencies": []
+    },
+    "packages/*": {
+      "entry": ["src/**/*.{ts,tsx,mjs}"],
+      "project": ["src/**/*.{ts,tsx,mjs}"],
+      "ignoreDependencies": []
+    }
+  }
+}

@@ -1,0 +1,19 @@
+.Toastify__toast-container--top-right {
+  right: 1em !important;
+}
+
+@media (min-width: 640px) {
+  .Toastify__toast-container--top-right {
+    right: 1em !important;
+  }
+}
+@media (min-width: 768px) {
+  .Toastify__toast-container--top-right {
+    right: 1em !important;
+  }
+}
+@media (min-width: 1024px) {
+  .Toastify__toast-container--top-right {
+    right: 21em !important;
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "@repo/theme",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./react": "./src/ThemeProvider.tsx"
+  },
+  "peerDependencies": {
+    "antd": "^5.20.6",
+    "react": "^18"
+  }
+}

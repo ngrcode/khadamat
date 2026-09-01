@@ -1,0 +1,28 @@
+.ant-menu-item-selected {
+    background-color: rgba(255, 255, 255, 0.2) !important; /* Lighter background for selected item */
+    color: #ffeb3b !important; /* Custom color for selected text */
+}
+.ant-drawer-header-title{
+  height: 30px ;
+  padding: 20px;  
+}
+.drawer-menu-container {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.drawer-link {
+    text-align: right;
+        width: 100%;
+
+    padding: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.drawer-link:hover {
+      width: 100%;
+
+    color: #ffeb3b;
+}

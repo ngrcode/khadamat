@@ -1,0 +1,11 @@
+.git
+.github
+.husky
+node_modules
+**/node_modules
+**/.next
+**/coverage
+**/playwright-report
+**/test-results
+.env*
+npm-debug.log*

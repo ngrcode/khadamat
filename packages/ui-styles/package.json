@@ -1,0 +1,8 @@
+{
+  "name": "@repo/ui-styles",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    "./globals.css": "./src/globals.css"
+  }
+}

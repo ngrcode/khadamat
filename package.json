@@ -1,0 +1,88 @@
+{
+  "name": "khadamat-gostar",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "node -e \"console.error('Direct development is disabled. Run: npm run docker:up'); process.exit(1)\"",
+    "dev:web": "node -e \"console.error('Direct development is disabled. Run: npm run docker:up'); process.exit(1)\"",
+    "dev:admin": "node -e \"console.error('Direct development is disabled. Run: npm run docker:up'); process.exit(1)\"",
+    "build": "turbo build",
+    "start": "turbo start",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "typecheck": "npm run typecheck --workspace=web && npm run typecheck --workspace=khadamat-gostar-admin",
+    "test": "turbo test",
+    "test:unit": "turbo test:unit",
+    "test:component": "turbo test:component",
+    "test:integration": "turbo test:integration",
+    "test:api": "turbo test:api",
+    "test:contract": "turbo test:contract",
+    "test:mutation": "turbo test:mutation",
+    "test:query": "turbo test:query",
+    "test:coverage": "turbo test:coverage",
+    "test:e2e": "turbo test:e2e",
+    "test:e2e:ui": "turbo test:e2e:ui",
+    "test:e2e:smoke": "turbo test:e2e:smoke",
+    "test:e2e:a11y": "turbo test:e2e:a11y",
+    "test:e2e:cross-browser": "turbo test:e2e:cross-browser",
+    "test:visual": "turbo test:visual",
+    "test:visual:update": "turbo test:visual:update",
+    "test:performance": "turbo test:performance",
+    "test:load": "turbo test:load",
+    "test:security": "turbo test:security",
+    "test:zap": "turbo test:zap",
+    "api:generate": "turbo api:generate",
+    "api:watch": "turbo api:watch",
+    "docker:build:web": "docker build --build-arg APP=web -t khadamat-gostar-web .",
+    "docker:build:admin": "docker build --build-arg APP=khadamat-gostar-admin -t khadamat-gostar-admin .",
+    "docker:up": "docker compose up --build -d",
+    "docker:logs": "docker compose logs -f",
+    "docker:ps": "docker compose ps",
+    "docker:down": "docker compose down",
+    "format": "biome format --write .",
+    "format:check": "biome format .",
+    "imports:check": "biome check --only=assist/source/organizeImports .",
+    "imports:fix": "biome check --write --only=assist/source/organizeImports .",
+    "knip": "knip --include files,dependencies,devDependencies,exports,types",
+    "audit:production": "npm audit --omit=dev --audit-level=high",
+    "quality:static": "npm run format:check && npm run lint && npm run imports:check && npm run typecheck && npm run knip && npm run audit:production",
+    "quality:prepush": "npm run quality:static && npm run test:unit && npm run test:component && npm run test:integration && npm run test:api && npm run test:coverage",
+    "quality:publish": "npm run quality:prepush && npm run test:e2e && npm run build",
+    "validate": "npm run quality:publish",
+    "prepublishOnly": "npm run quality:publish",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,cjs,mjs,ts,cts,mts,jsx,tsx,json,jsonc,css}": "biome check --write"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.11",
+    "@commitlint/cli": "^21.2.2",
+    "@commitlint/config-conventional": "^21.2.2",
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "husky": "^9.1.4",
+    "knip": "^6.33.0",
+    "lint-staged": "^15.2.8",
+    "prettier": "^3.3.3",
+    "turbo": "^2.5.4"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "npm@10.9.2",
+  "overrides": {
+    "dompurify": "3.4.14",
+    "nanoid": "^5.1.5",
+    "quill": "2.0.2",
+    "react-quill-new": {
+      "quill": "2.0.2"
+    },
+    "jspdf": {
+      "dompurify": "3.4.14"
+    }
+  }
+}

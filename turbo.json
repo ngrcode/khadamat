@@ -1,0 +1,72 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "start": {
+      "dependsOn": ["build"],
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "dependsOn": ["^build"]
+    },
+    "typecheck": {
+      "dependsOn": ["^typecheck"],
+      "outputs": []
+    },
+    "test": {
+      "cache": false
+    },
+    "test:unit": {
+      "cache": false
+    },
+    "test:component": {
+      "cache": false
+    },
+    "test:integration": { "cache": false },
+    "test:api": { "cache": false },
+    "test:contract": { "cache": false },
+    "test:mutation": { "cache": false },
+    "test:query": {
+      "cache": false
+    },
+    "test:coverage": {
+      "cache": false
+    },
+    "test:e2e": {
+      "cache": false
+    },
+    "test:e2e:ui": {
+      "cache": false,
+      "persistent": true
+    },
+    "test:e2e:smoke": { "cache": false },
+    "test:e2e:a11y": { "cache": false },
+    "test:e2e:cross-browser": { "cache": false },
+    "test:visual": {
+      "cache": false
+    },
+    "test:visual:update": {
+      "cache": false
+    },
+    "test:performance": { "cache": false },
+    "test:load": { "cache": false },
+    "test:security": { "cache": false },
+    "test:zap": { "cache": false },
+    "api:generate": {
+      "cache": false
+    },
+    "api:watch": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}

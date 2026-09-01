@@ -1,0 +1,15 @@
+{
+  "name": "@repo/i18n",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/exports.ts",
+    "./react": "./src/LanguageProvider.tsx",
+    "./menu": "./src/menu.ts",
+    "./months": "./src/months.ts"
+  },
+  "peerDependencies": {
+    "antd": "^5.20.6",
+    "react": "^18"
+  }
+}

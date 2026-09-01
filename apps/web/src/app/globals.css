@@ -1,0 +1,39 @@
+@import '@repo/ui-styles/globals.css';
+
+.web-login-page,
+.web-login-page .ant-typography,
+.web-login-page button,
+.web-login-page input,
+.web-login-page .ant-btn,
+.web-login-page .ant-segmented,
+.web-login-page .ant-input,
+.web-login-page .ant-input-affix-wrapper {
+  font-family: var(--app-font-family) !important;
+}
+
+.web-login-page {
+  font-size: var(--app-font-size);
+  line-height: 1.65;
+}
+
+.web-login-page .login-submit-button.ant-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  line-height: 1 !important;
+}
+
+.web-login-page .login-submit-button .anticon {
+  margin: 0 !important;
+  font-size: 16px !important;
+  line-height: 1 !important;
+}
+
+@media (max-height: 760px) and (min-width: 1024px) {
+  .web-login-page .web-login-visual {
+    min-height: 570px !important;
+  }
+}

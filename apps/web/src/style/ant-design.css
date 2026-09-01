@@ -1,0 +1,791 @@
+/* ====================================================================== */
+/* ۱. مدیریت متغیرهای منو بر اساس تم اصلی سیستم                             */
+/* ====================================================================== */
+
+:root {
+  /* تنظیمات پیش‌فرض تم روشن (Light Theme) */
+  --color-bg-dark: rgba(255, 255, 255, 0.95);
+  --color-primary: #3a1571;
+  --color-accent: #e5007d;
+  --color-gold: #e5007d;
+  /* طلایی تیره و خوانا برای کنتراست حالت روشن */
+  --color-text: #1f2937;
+  --color-submenu-bg: rgba(249, 250, 251, 0.98);
+  --color-submenu-border: rgba(58, 21, 113, 0.15);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* تنظیمات خودکار تم تاریک سیستمی (Dark Theme) */
+    --color-bg-dark: #050B1E;
+    --color-primary: #bfa6e4;
+    --color-accent: #f47db7;
+    --color-gold: #f47db7;
+    --color-text: #F8F9FA;
+    --color-submenu-bg: rgba(5, 11, 30, 0.95);
+    --color-submenu-border: rgba(191, 166, 228, 0.2);
+  }
+}
+
+/* کنترل صریح در صورت تغییر تم توسط کامپوننت سوییچر */
+[data-theme='dark'] {
+  --color-bg-dark: #050B1E;
+  --color-primary: #bfa6e4;
+  --color-accent: #f47db7;
+  --color-gold: #f47db7;
+  --color-text: #F8F9FA;
+  --color-submenu-bg: rgba(5, 11, 30, 0.95);
+  --color-submenu-border: rgba(191, 166, 228, 0.2);
+}
+
+[data-theme='light'] {
+  --color-bg-dark: rgba(255, 255, 255, 0.95);
+  --color-primary: #3a1571;
+  --color-accent: #e5007d;
+  --color-gold: #e5007d;
+  --color-text: #1f2937;
+  --color-submenu-bg: rgba(249, 250, 251, 0.98);
+  --color-submenu-border: rgba(58, 21, 113, 0.15);
+}
+
+/* ====================================================================== */
+/* ۲. پیکربندی ساختار، راست‌چین و فونت منو                                  */
+/* ====================================================================== */
+
+/* منوی RTL */
+.ant-menu-rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+/* استایل پایه آیتم‌ها */
+.ant-menu-rtl .ant-menu-item,
+.ant-menu-rtl .ant-menu-submenu-title {
+  padding-right: 24px !important;
+  padding-left: 16px !important;
+  text-align: right !important;
+}
+
+/* تزریق هماهنگ فونت ایران‌سانس به کل ساختار منو */
+*,
+*::before,
+*::after,
+body,
+.ant-typography,
+.ant-menu,
+.ant-menu *,
+.ant-btn,
+.ant-input,
+.ant-select,
+.ant-menu-title-content {
+  font-family: "IranSans", sans-serif !important;
+}
+
+@media (max-width: 768px) {
+  .ant-menu {
+    pointer-events: auto !important;
+  }
+}
+
+.ant-layout-sider-children {
+  position: relative !important;
+  overflow: visible !important;
+}
+
+/* ====================================================================== */
+/* ۳. بدنه اصلی منوی سفارشی پویا (Custom Dynamic Menu)                     */
+/* ====================================================================== */
+
+.custom-menu {
+  background: var(--color-bg-dark) !important;
+  border: none !important;
+  perspective: 1000px;
+  transition: all 0.3s ease !important;
+  color: var(--color-text);
+}
+
+/* آیتم‌ها */
+.custom-menu .ant-menu-item,
+.custom-menu .ant-menu-submenu-title {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  border-radius: 8px !important;
+  margin: 4px 8px !important;
+  height: 44px !important;
+  line-height: 44px !important;
+  position: relative;
+  overflow: hidden;
+  color: var(--color-text) !important;
+}
+
+/* آیتم انتخاب شده */
+.selected-menu-item,
+.custom-menu .ant-menu-item-selected {
+  color: var(--color-text) !important;
+  animation: emberPulse 4s infinite !important;
+  transform: translateX(-4px) scale(1.01) !important;
+  position: relative;
+  z-index: 10;
+}
+
+.selected-menu-item::before,
+.custom-menu .ant-menu-item-selected::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 10px;
+  z-index: -1;
+  background: var(--color-primary);
+}
+
+/* نقطه متحرک طلایی المان فعال */
+.selected-menu-item::after,
+.custom-menu .ant-menu-item-selected::after {
+  content: '✦';
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-gold);
+  font-size: 14px;
+  text-shadow: 0 0 10px var(--color-gold);
+  animation: emberTwinkle 1.5s ease-in-out infinite;
+}
+
+/* آیکون‌ها */
+.custom-menu .ant-menu-item-icon {
+  font-size: 16px !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  color: var(--color-text) !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 180, 216, 0.3));
+}
+
+/* افکت Hover روی آیکون‌ها */
+.custom-menu .ant-menu-item:not(.ant-menu-item-selected):hover .ant-menu-item-icon,
+.custom-menu .ant-menu-submenu-title:hover .ant-menu-item-icon {
+  transform: scale(1.2) rotate(5deg) !important;
+  filter: drop-shadow(0 4px 8px rgba(0, 180, 216, 0.5)) drop-shadow(0 0 10px rgba(255, 123, 0, 0.6)) !important;
+}
+
+/* ====================================================================== */
+/* ۴. زیرمنوهای آکاردئونی و پاپ‌آپ با ساختار تغییر تم                         */
+/* ====================================================================== */
+
+.ant-menu-sub.ant-menu-inline {
+  background: var(--color-submenu-bg) !important;
+  border-right: 2px solid var(--color-submenu-border) !important;
+  margin: 4px 12px !important;
+  padding: 6px 0 !important;
+  border-radius: 12px !important;
+  animation: slideInEmber 0.3s ease-out !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* آیتم‌های داخل زیرمنو */
+.ant-menu-sub.ant-menu-inline .ant-menu-item {
+  margin: 2px 8px !important;
+  height: 40px !important;
+  line-height: 40px !important;
+  border-radius: 6px !important;
+  background: transparent !important;
+  transition: all 0.2s ease !important;
+  padding-right: 32px !important;
+  color: var(--color-text) !important;
+}
+
+.ant-menu-sub.ant-menu-inline .ant-menu-item a,
+.ant-menu-sub.ant-menu-inline .ant-menu-title-content {
+  color: var(--color-text) !important;
+}
+
+/* زمان قرارگیری ماوس روی زیرمنوها */
+.ant-menu-sub.ant-menu-inline .ant-menu-item:hover {
+  background: rgba(0, 180, 216, 0.1) !important;
+  transform: translateX(-2px) !important;
+  border-right: 2px solid var(--color-primary) !important;
+}
+
+.ant-menu-sub.ant-menu-inline .ant-menu-item:hover a,
+.ant-menu-sub.ant-menu-inline .ant-menu-item:hover .ant-menu-title-content {
+  color: var(--color-gold) !important;
+}
+
+/* حالت انتخاب شده زیرمنو */
+.ant-menu-sub.ant-menu-inline .ant-menu-item-selected {
+  background: linear-gradient(90deg, rgba(0, 180, 216, 0.15), transparent) !important;
+  border-right: 3px solid var(--color-accent) !important;
+  color: var(--color-gold) !important;
+}
+
+.ant-menu-sub.ant-menu-inline .ant-menu-item-selected a,
+.ant-menu-sub.ant-menu-inline .ant-menu-item-selected .ant-menu-title-content {
+  color: var(--color-gold) !important;
+}
+
+/* مدیریت عمق لایه‌ها در زیرمنوهای پیشرفته */
+.ant-menu-sub.ant-menu-inline .ant-menu-sub.ant-menu-inline .ant-menu-item {
+  padding-right: 2px !important;
+  background: rgba(255, 123, 0, 0.03) !important;
+}
+
+.ant-menu-sub.ant-menu-inline .ant-menu-sub.ant-menu-inline .ant-menu-sub.ant-menu-inline .ant-menu-item {
+  padding-right: 64px !important;
+  background: rgba(255, 209, 102, 0.03) !important;
+}
+
+.ant-menu-sub.ant-menu-inline .ant-menu-item-icon {
+  font-size: 14px !important;
+  color: var(--color-text) !important;
+}
+
+.ant-menu-sub.ant-menu-inline .ant-menu-item:hover .ant-menu-item-icon {
+  color: var(--color-gold) !important;
+  transform: scale(1.1) !important;
+}
+
+.ant-menu-sub.ant-menu-inline .ant-menu-item-selected .ant-menu-item-icon {
+  color: var(--color-gold) !important;
+  filter: drop-shadow(0 0 8px var(--color-gold));
+}
+
+/* ====================================================================== */
+/* ۵. انیمیشن‌ها و افکت‌های اختصاصی سیستم نمایش Ember                         */
+/* ====================================================================== */
+
+@keyframes emberPulse {
+
+  0%,
+  100% {
+    box-shadow: 0 5px 25px rgba(0, 180, 216, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 1px 30px rgba(0, 180, 216, 0.15);
+  }
+}
+
+@keyframes emberRotate {
+  0% {
+    filter: hue-rotate(0deg) brightness(1);
+  }
+
+  50% {
+    filter: hue-rotate(45deg) brightness(1.2);
+  }
+
+  100% {
+    filter: hue-rotate(0deg) brightness(1);
+  }
+}
+
+@keyframes emberTwinkle {
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+
+  50% {
+    transform: translateY(-50%) scale(1.1);
+    text-shadow: 0 0 20px var(--color-gold);
+  }
+}
+
+@keyframes slideInEmber {
+  0% {
+    opacity: 0;
+    transform: translateX(15px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* المان‌های جانبی و پاپ‌آپ شناور منو */
+.ant-menu-item-divider {
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent) !important;
+  height: 2px !important;
+  margin: 12px 20px !important;
+}
+
+.custom-menu::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-menu::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+  border-radius: 10px;
+}
+
+.custom-menu::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--color-accent), var(--color-gold));
+}
+
+.ant-menu-inline-collapsed {
+  width: 80px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.ant-menu-inline-collapsed .ant-menu-item-icon {
+  font-size: 18px !important;
+  animation: emberTwinkle 2s ease-in-out infinite;
+}
+
+.ant-menu-inline-collapsed .ant-menu-item:hover {
+  transform: scale(1.1) !important;
+}
+
+.custom-menu .ant-menu-title-content {
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.custom-menu .ant-menu-item:hover .ant-menu-title-content {
+  text-shadow: 0 0 20px rgba(0, 180, 216, 0.2) !important;
+}
+
+.ant-menu-submenu-popup .ant-menu {
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+  background: var(--color-submenu-bg) !important;
+}
+
+.ant-menu-submenu-popup .ant-menu-item {
+  margin: 2px 8px !important;
+  border-radius: 6px !important;
+  color: var(--color-text) !important;
+}
+
+.ant-menu-submenu-popup .ant-menu-item a {
+  color: var(--color-text) !important;
+}
+
+.ant-menu-submenu-popup .ant-menu-item:hover {
+  background: rgba(0, 180, 216, 0.12) !important;
+  color: var(--color-gold) !important;
+}
+
+.ant-menu-submenu-popup .ant-menu-item-selected {
+  background: linear-gradient(90deg, rgba(0, 180, 216, 0.2), transparent) !important;
+  color: var(--color-gold) !important;
+}
+
+/* تراز بندی نهایی المان‌ها و تگ‌های a داخلی */
+.ant-menu .ant-menu-item,
+.ant-menu .ant-menu-submenu-title {
+  display: flex !important;
+  align-items: center !important;
+  padding: 8px 16px !important;
+  gap: 8px !important;
+}
+
+.ant-menu .ant-menu-item .ant-menu-title-content,
+.ant-menu .ant-menu-submenu-title .ant-menu-title-content {
+  display: flex !important;
+  align-items: center !important;
+  flex: 1 !important;
+}
+
+.ant-menu .ant-menu-item .ant-menu-title-content a,
+.ant-menu .ant-menu-submenu-title .ant-menu-title-content a {
+  color: inherit !important;
+  width: 100% !important;
+}
+
+/* Dashboard navigation — calm, isolated visual system */
+.app-dashboard-header {
+  border-bottom: 2px solid transparent !important;
+  border-image: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-primary)) 1 !important;
+  box-shadow: 0 7px 24px rgba(var(--color-primary-rgb), 0.08) !important;
+}
+
+.app-dashboard-sider {
+  border-inline: 1px solid rgba(var(--color-primary-rgb), 0.09) !important;
+  box-shadow: 0 18px 45px rgba(var(--color-primary-rgb), 0.09) !important;
+  background:
+    radial-gradient(circle at 50% 0, rgba(var(--color-accent-rgb), 0.07), transparent 230px),
+    var(--sider-bg) !important;
+}
+
+.dashboard-navigation {
+  color: var(--color-menu-text);
+}
+
+.dashboard-menu-heading {
+  padding: 14px 5px 12px;
+  border-bottom: 1px solid rgba(var(--color-primary-rgb), 0.08);
+  margin-bottom: 8px;
+}
+
+.dashboard-menu-search.ant-input-affix-wrapper {
+  height: 42px;
+  padding-inline: 13px !important;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.1) !important;
+  border-radius: 13px !important;
+  background: var(--app-surface-alt) !important;
+  box-shadow: none !important;
+}
+
+.dashboard-menu-search.ant-input-affix-wrapper:focus-within {
+  border-color: rgba(var(--color-primary-rgb), 0.35) !important;
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.07) !important;
+  background: var(--app-card-bg) !important;
+}
+
+.dashboard-menu-search .ant-input-prefix {
+  color: var(--color-menu-muted);
+  margin-inline-end: 9px;
+}
+
+.dashboard-menu,
+.dashboard-menu.ant-menu {
+  min-width: 0;
+  padding: 4px 2px 18px !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--color-menu-text) !important;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(var(--color-primary-rgb), 0.18) transparent;
+}
+
+.dashboard-menu .ant-menu-item,
+.dashboard-menu .ant-menu-submenu-title {
+  display: flex !important;
+  align-items: center !important;
+  height: 48px !important;
+  line-height: 48px !important;
+  margin: 4px 3px !important;
+  padding-inline: 12px !important;
+  gap: 11px !important;
+  overflow: hidden;
+  border: 1px solid transparent !important;
+  border-radius: 14px !important;
+  color: var(--color-menu-text) !important;
+  font-size: 13px;
+  font-weight: 600 !important;
+  transform: none !important;
+  animation: none !important;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease !important;
+}
+
+.dashboard-menu .ant-menu-item > .ant-menu-title-content,
+.dashboard-menu .ant-menu-submenu-title > .ant-menu-title-content {
+  min-width: 0;
+  height: 100%;
+}
+
+.dashboard-menu-tooltip-target {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.dashboard-menu-tooltip-target > a,
+.dashboard-menu-tooltip-target > span {
+  width: 100%;
+  overflow: hidden;
+  color: inherit !important;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dashboard-menu .ant-menu-item::before,
+.dashboard-menu .ant-menu-item::after {
+  display: none !important;
+}
+
+.dashboard-menu .ant-menu-item-icon,
+.dashboard-menu .ant-menu-submenu-title .ant-menu-item-icon {
+  display: inline-grid !important;
+  flex: 0 0 34px;
+  width: 34px !important;
+  height: 34px !important;
+  place-items: center;
+  margin: 0 !important;
+  border-radius: 11px;
+  color: var(--color-menu-muted) !important;
+  background: rgba(var(--color-primary-rgb), 0.06) !important;
+  filter: none !important;
+  font-size: 16px !important;
+  transform: none !important;
+  transition: color 160ms ease, background-color 160ms ease !important;
+}
+
+.dashboard-menu .ant-menu-item:hover,
+.dashboard-menu .ant-menu-submenu-title:hover {
+  color: var(--color-primary) !important;
+  border-color: rgba(var(--color-primary-rgb), 0.14) !important;
+  background: linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.1), rgba(var(--color-accent-rgb), 0.055)) !important;
+  transform: none !important;
+}
+
+.dashboard-menu .ant-menu-item:hover .ant-menu-item-icon,
+.dashboard-menu .ant-menu-submenu-title:hover .ant-menu-item-icon {
+  color: var(--color-primary) !important;
+  background: rgba(var(--color-primary-rgb), 0.11) !important;
+  filter: none !important;
+  transform: translateY(-1px) scale(1.06) !important;
+}
+
+.dashboard-menu .ant-menu-item:hover,
+.dashboard-menu .ant-menu-submenu-title:hover {
+  box-shadow: 0 7px 18px rgba(var(--color-primary-rgb), 0.1) !important;
+}
+
+.dashboard-menu .ant-menu-item-selected {
+  color: #fff !important;
+  border-color: rgba(var(--color-primary-rgb), 0.12) !important;
+  background: var(--brand-gradient) !important;
+  box-shadow: 0 9px 22px rgba(var(--color-primary-rgb), 0.2) !important;
+  font-weight: 750 !important;
+}
+
+.dashboard-menu .ant-menu-item-selected::after {
+  content: '' !important;
+  display: block !important;
+  position: absolute !important;
+  inset-inline: 16px !important;
+  bottom: 3px !important;
+  top: auto !important;
+  width: auto !important;
+  height: 3px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.38), #fff, rgba(255, 255, 255, 0.38)) !important;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.48) !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.dashboard-menu > .ant-menu-item,
+.dashboard-menu > .ant-menu-submenu > .ant-menu-submenu-title {
+  box-shadow: 0 1px 0 rgba(var(--color-primary-rgb), 0.035);
+}
+
+.dashboard-menu > .ant-menu-item-selected:hover {
+  color: #fff !important;
+  border-color: rgba(var(--color-accent-rgb), 0.3) !important;
+  background: var(--brand-gradient) !important;
+  box-shadow: 0 11px 25px rgba(var(--color-primary-rgb), 0.24) !important;
+}
+
+.dashboard-menu > .ant-menu-item:not(.ant-menu-item-selected):hover::after {
+  content: '' !important;
+  display: block !important;
+  position: absolute !important;
+  inset-inline: 18px !important;
+  bottom: 3px !important;
+  width: auto !important;
+  height: 2px !important;
+  border-radius: 999px !important;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent)) !important;
+  opacity: 0.72 !important;
+  transform: none !important;
+}
+
+.dashboard-menu .ant-menu-item-selected .ant-menu-item-icon {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.17) !important;
+}
+
+.dashboard-menu .ant-menu-submenu-arrow {
+  color: var(--color-menu-muted) !important;
+  inset-inline-end: 14px !important;
+}
+
+.dashboard-menu > .ant-menu-submenu-open > .ant-menu-submenu-title {
+  color: var(--color-primary) !important;
+  border-color: rgba(var(--color-primary-rgb), 0.16) !important;
+  background: linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.12), rgba(var(--color-accent-rgb), 0.06)) !important;
+}
+
+.dashboard-menu > .ant-menu-submenu-open > .ant-menu-submenu-title .ant-menu-item-icon {
+  color: var(--color-primary) !important;
+  background: rgba(var(--color-primary-rgb), 0.12) !important;
+}
+
+.dashboard-menu .ant-menu-sub.ant-menu-inline {
+  position: relative;
+  margin: 7px 17px 14px 9px !important;
+  padding: 7px 10px 7px 6px !important;
+  border: 1px solid rgba(var(--color-primary-rgb), 0.12) !important;
+  border-inline-start: 3px solid var(--color-accent) !important;
+  border-radius: 13px !important;
+  background: linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.065), rgba(var(--color-accent-rgb), 0.035)) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28) !important;
+  animation: none !important;
+}
+
+.dashboard-menu .dashboard-menu-primary-item.ant-menu-submenu > .ant-menu-submenu-title {
+  min-height: 50px !important;
+  border-inline-start: 3px solid rgba(var(--color-primary-rgb), 0.22) !important;
+  background: var(--app-card-bg) !important;
+}
+
+.dashboard-menu .dashboard-menu-primary-item.ant-menu-submenu-open > .ant-menu-submenu-title {
+  border-inline-start-color: var(--color-primary) !important;
+  background: linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.13), rgba(var(--color-accent-rgb), 0.065)) !important;
+  box-shadow: 0 7px 19px rgba(var(--color-primary-rgb), 0.1) !important;
+}
+
+.dashboard-menu .dashboard-menu-primary-item.ant-menu-submenu-open > .ant-menu-submenu-title::after {
+  content: '';
+  position: absolute;
+  inset-inline: 18px;
+  bottom: 3px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  box-shadow: 0 0 9px rgba(var(--color-accent-rgb), 0.24);
+}
+
+.dashboard-menu .dashboard-menu-child-item {
+  font-size: 12px !important;
+  font-weight: 550 !important;
+}
+
+.dashboard-menu .ant-menu-sub.ant-menu-inline::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: -3px;
+  top: -8px;
+  width: 14px;
+  height: 8px;
+  border-inline-start: 2px solid var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
+  border-end-start-radius: 7px;
+}
+
+.dashboard-menu .ant-menu-sub.ant-menu-inline .ant-menu-item {
+  height: 40px !important;
+  line-height: 40px !important;
+  margin: 2px 0 !important;
+  padding-inline: 11px !important;
+  color: var(--color-menu-muted) !important;
+  border-radius: 9px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.dashboard-menu .ant-menu-sub.ant-menu-inline .ant-menu-item .ant-menu-title-content {
+  position: relative;
+  padding-inline-start: 13px;
+}
+
+.dashboard-menu .ant-menu-sub.ant-menu-inline .ant-menu-item .ant-menu-title-content::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(var(--color-primary-rgb), 0.32);
+  transform: translateY(-50%);
+  transition: width 160ms ease, background-color 160ms ease;
+}
+
+.dashboard-menu .ant-menu-sub.ant-menu-inline .ant-menu-item .ant-menu-item-icon {
+  width: 26px !important;
+  height: 26px !important;
+  flex-basis: 26px;
+  border-radius: 8px;
+  font-size: 13px !important;
+  background: transparent !important;
+}
+
+.dashboard-menu .ant-menu-sub.ant-menu-inline .ant-menu-item:hover {
+  color: var(--color-primary) !important;
+  border-color: rgba(var(--color-primary-rgb), 0.08) !important;
+  background: linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.1), rgba(var(--color-accent-rgb), 0.045)) !important;
+}
+
+.dashboard-menu .ant-menu-sub.ant-menu-inline .ant-menu-item:hover .ant-menu-title-content::before {
+  width: 8px;
+  border-radius: 4px;
+  background: var(--color-primary);
+}
+
+.dashboard-menu .ant-menu-sub.ant-menu-inline .ant-menu-item-selected {
+  color: var(--color-primary) !important;
+  border-color: rgba(var(--color-accent-rgb), 0.14) !important;
+  background: linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.14), rgba(var(--color-accent-rgb), 0.09)) !important;
+  box-shadow: inset 3px 0 0 var(--color-accent) !important;
+}
+
+.dashboard-menu .ant-menu-sub.ant-menu-inline .ant-menu-item-selected::after {
+  inset-inline: 12px !important;
+  bottom: 2px !important;
+  height: 2px !important;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent)) !important;
+  box-shadow: 0 0 8px rgba(var(--color-accent-rgb), 0.28) !important;
+}
+
+.dashboard-menu .ant-menu-sub.ant-menu-inline .ant-menu-item-selected:hover {
+  color: var(--color-primary) !important;
+  border-color: rgba(var(--color-accent-rgb), 0.2) !important;
+  background: linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.18), rgba(var(--color-accent-rgb), 0.12)) !important;
+}
+
+.dashboard-menu .ant-menu-sub.ant-menu-inline .ant-menu-item-selected .ant-menu-title-content::before {
+  width: 8px;
+  border-radius: 4px;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(var(--color-accent-rgb), 0.1);
+}
+
+[data-direction='rtl'] .dashboard-menu .ant-menu-sub.ant-menu-inline .ant-menu-item-selected {
+  box-shadow: inset -3px 0 0 var(--color-accent) !important;
+}
+
+.dashboard-menu-empty {
+  margin: 32px 8px !important;
+  color: var(--color-menu-muted);
+}
+
+.dashboard-menu-tooltip .ant-tooltip-inner {
+  padding: 8px 12px !important;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px !important;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent)) !important;
+  box-shadow: 0 10px 28px rgba(var(--color-primary-rgb), 0.26) !important;
+  color: #fff !important;
+  font-family: var(--app-font-family) !important;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.dashboard-menu-tooltip .ant-tooltip-arrow::before {
+  background: var(--color-primary) !important;
+}
+
+html[data-reduce-motion='true'] .dashboard-menu .ant-menu-item:hover .ant-menu-item-icon,
+html[data-reduce-motion='true'] .dashboard-menu .ant-menu-submenu-title:hover .ant-menu-item-icon {
+  transform: none !important;
+}
+
+.ant-layout-sider-collapsed .dashboard-navigation {
+  padding-inline: 8px !important;
+}
+
+.ant-layout-sider-collapsed .dashboard-menu .ant-menu-item,
+.ant-layout-sider-collapsed .dashboard-menu .ant-menu-submenu-title {
+  width: 54px !important;
+  height: 48px !important;
+  margin: 5px auto !important;
+  padding-inline: 10px !important;
+  justify-content: center !important;
+}
+
+.ant-layout-sider-collapsed .dashboard-menu .ant-menu-item-icon,
+.ant-layout-sider-collapsed .dashboard-menu .ant-menu-submenu-title .ant-menu-item-icon {
+  flex-basis: 34px;
+  margin: 0 !important;
+  animation: none !important;
+}

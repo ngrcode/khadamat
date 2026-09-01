@@ -1,0 +1,1514 @@
+/* @import '../style/ant-design.css'; */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'IranSans';
+  src: url('/font/IRANSansWebFaNum.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vazir';
+  src: url('/font/vazir-font-v18.0.0/Farsi-Digits/Vazir-FD.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vazir';
+  src: url('/font/vazir-font-v18.0.0/Farsi-Digits/Vazir-Medium-FD.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Vazir';
+  src: url('/font/vazir-font-v18.0.0/Farsi-Digits/Vazir-Bold-FD.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sahel';
+  src: url('/font/sahel-font-v1.0.0-alpha14/Farsi-Digits/Sahel-FD.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sahel';
+  src: url('/font/sahel-font-v1.0.0-alpha14/Farsi-Digits/Sahel-Bold-FD.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Samim';
+  src: url('/font/samim-font-v2.0.1/Farsi-Digits/Samim-FD.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Samim';
+  src: url('/font/samim-font-v2.0.1/Farsi-Digits/Samim-Bold-FD.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Shabnam';
+  src: url('/font/shabnam-font-v2.4.0/Farsi-Digits/Shabnam-FD.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Shabnam';
+  src: url('/font/shabnam-font-v2.4.0/Farsi-Digits/Shabnam-Bold-FD.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Parastoo';
+  src: url('/font/parastoo-font-v1.0.0-alpha5/web/Farsi-Digits/Parastoo-FD.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Parastoo';
+  src: url('/font/parastoo-font-v1.0.0-alpha5/web/Farsi-Digits/Parastoo-Bold-FD.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Tanha';
+  src: url('/font/tanha-font-v0.9/Farsi-Digits/Tanha-FD.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Yekan';
+  src: url('/font/yekan-font/yekan-regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IranSans';
+  src: url('/font/IRANSansWebFaNum_Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ====================================================================== */
+/* ۱. تنظیمات پایه (Light Theme Default)                                  */
+/* ====================================================================== */
+:root {
+  color-scheme: light;
+  --app-font-size: 14px;
+  --app-font-family: 'IranSans', 'IRANSansXFaNum', Arial, sans-serif;
+  --app-radius: 8px;
+  --app-control-height: 40px;
+  --app-table-cell-padding: 12px 14px;
+  --app-menu-item-height: 44px;
+  --color-primary: #3a1571;
+  --color-primary-rgb: 58, 21, 113;
+  --color-accent: #e5007d;
+  --color-accent-rgb: 229, 0, 125;
+  --brand-gradient: linear-gradient(135deg, #3a1571 0%, #e5007d 100%);
+  --brand-gradient-soft: linear-gradient(135deg, rgba(58, 21, 113, 0.92), rgba(229, 0, 125, 0.88));
+  --brand-gradient-vertical: linear-gradient(180deg, #6b2db5 0%, #3a1571 48%, #e5007d 100%);
+  --portal-page-bg: #f3f5f8;
+  --portal-ink: #111827;
+  --portal-muted: #3f4b5b;
+  --muted-foreground-rgb: 100, 116, 139;
+  --app-surface: #ffffff;
+  --app-surface-alt: #f3f5f8;
+  --app-card-bg: rgba(255, 255, 255, 0.92);
+  --app-card-border: rgba(15, 23, 42, 0.08);
+  --app-content-max-width: none;
+  --foreground-rgb: 17, 24, 39;
+  --background-start-rgb: 243, 245, 248;
+  --background-end-rgb: 243, 245, 248;
+
+  /* متغیرهای اینپوت و انتخابگرها */
+  --ant-input-outlined: #ffffff;
+  --ant-input-affix-wrapper: #ffffff;
+  --ant-input: #ffffff;
+  --input-border: rgba(217, 217, 217, 0.5);
+  --ant-picker: #ffffff;
+  --ant-picker-border: rgba(217, 217, 217, 0.5);
+  --form-label-color: 31, 41, 55;
+
+  /* استایل ساختار صفحه */
+  --ant-layout-header: rgba(255, 255, 255, 0.95);
+  --sider-bg: #ffffff;
+  --ant-table-bg: #ffffff;
+  --ant-table-hover-bg: #f4effc;
+  --ant-table-thead-bg: #f9fafb;
+  --ant-table-thead-color: #0f172a;
+  --table-border-color: rgba(15, 23, 42, 0.08);
+  --app-header-control-bg: rgba(255, 255, 255, 0.68);
+  --app-header-control-hover: rgba(255, 255, 255, 0.92);
+  --app-header-control-color: #0f172a;
+
+  /* استایل ردیف‌های جدول */
+  --table-row-odd-bg: #ffffff;
+  --table-row-even-bg: #f9fafb;
+
+  /* جلوه شیشه‌ای */
+  --glass-border: 1px solid rgba(0, 0, 0, 0.05);
+  --glass-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* ====================================================================== */
+/* ۳. متغیرهای مخصوص منو (با کلاس‌های body که توسط ThemeProvider تنظیم می‌شوند) */
+/* ====================================================================== */
+body.light {
+  color-scheme: light;
+  --color-menu-bg: #ffffff;
+  --color-menu-text: #1f2937;
+  --color-menu-gold: var(--color-accent, #e5007d);
+  --color-menu-primary: var(--color-primary, #3a1571);
+  --color-menu-accent: var(--color-accent, #e5007d);
+  --color-menu-submenu-bg: var(--brand-50, #f8fafc);
+  --color-menu-submenu-border: rgba(var(--color-primary-rgb, 58, 21, 113), 0.12);
+}
+
+body.dark {
+  color-scheme: dark;
+  --color-menu-bg: #0f172a;
+  --color-menu-text: #f8fafc;
+  --color-menu-gold: var(--brand-accent-300, #f27ab3);
+  --color-menu-primary: var(--brand-200, #d1baf0);
+  --color-menu-accent: var(--brand-accent-300, #f27ab3);
+  --color-menu-submenu-bg: rgba(var(--color-primary-rgb, 58, 21, 113), 0.12);
+  --color-menu-submenu-border: rgba(var(--color-primary-rgb, 58, 21, 113), 0.28);
+  --app-surface: #151c2a;
+  --app-surface-alt: #0c111a;
+  --app-card-bg: rgba(15, 23, 42, 0.94);
+  --app-card-border: rgba(148, 163, 184, 0.28);
+  --app-text: #f1f5f9;
+  --foreground-rgb: 244, 247, 251;
+  --muted-foreground-rgb: 203, 213, 225;
+  --background-start-rgb: 12, 17, 26;
+  --background-end-rgb: 12, 17, 26;
+  --ant-input: #0f172a;
+  --ant-input-outlined: #0f172a;
+  --ant-input-affix-wrapper: #0f172a;
+  --ant-picker: #0f172a;
+  --input-border: rgba(148, 163, 184, 0.45);
+  --ant-picker-border: rgba(148, 163, 184, 0.45);
+  --form-label-color: 241, 245, 249;
+  --ant-table-bg: #0f172a;
+  --ant-table-thead-bg: rgba(58, 21, 113, 0.18);
+  --ant-table-thead-color: #f8fafc;
+  --table-border-color: rgba(148, 163, 184, 0.22);
+}
+
+/* ====================================================================== */
+/* ۴. پیکربندی فونت‌های فارسی و اعداد                                    */
+/* ====================================================================== */
+/* فونت‌های سفارشی: فایل‌ها را در public/font هر اپ قرار دهید */
+/*
+@font-face {
+  font-family: 'IranSans';
+  src: url('/font/IRANSansWebFaNum.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IranSans-Bold';
+  src: url('/font/IRANSansWebFaNum_Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+*/
+
+*,
+*::before,
+*::after,
+body,
+.ant-typography,
+.ant-menu,
+.ant-btn,
+.ant-input,
+.ant-select,
+.ant-modal,
+.ant-table,
+.ant-form,
+.ant-dropdown,
+.ant-popover,
+[class^="ant-"],
+.ant-table-wrapper td,
+.ant-table-wrapper th {
+  font-family: var(--app-font-family) !important;
+}
+
+html {
+  font-size: var(--app-font-size);
+  background-color: rgb(var(--background-start-rgb));
+}
+
+body {
+  min-height: 100vh;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    180deg,
+    rgb(var(--background-start-rgb)) 0%,
+    rgb(var(--background-end-rgb)) 100%
+  );
+  font-size: var(--app-font-size);
+  font-family: var(--app-font-family);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Visual appearance preferences */
+html[data-font-family] body,
+html[data-font-family] button,
+html[data-font-family] input,
+html[data-font-family] textarea,
+html[data-font-family] select,
+html[data-font-family] .ant-typography,
+html[data-font-family] .ant-table,
+html[data-font-family] [class^='ant-'] {
+  font-family: var(--app-font-family) !important;
+  line-height: var(--app-line-height);
+}
+
+html[data-font-family] body {
+  font-weight: var(--app-font-weight);
+}
+
+html[data-surface-style='SOLID'] .visual-surface,
+html[data-surface-style='SOLID'] .report-surface,
+html[data-surface-style='SOLID'] .custom-table-container {
+  backdrop-filter: none !important;
+  background: var(--app-surface) !important;
+}
+
+html[data-density='COMPACT'] .app-content-shell { padding: 0 !important; }
+html[data-density='COMPACT'] .visual-surface { padding: 12px; }
+html[data-table-density='COMPACT'] .ant-table-thead > tr > th,
+html[data-table-density='COMPACT'] .ant-table-tbody > tr > td { padding: 7px 10px !important; }
+html[data-table-density='COMFORTABLE'] .ant-table-thead > tr > th,
+html[data-table-density='COMFORTABLE'] .ant-table-tbody > tr > td { padding: 12px 14px !important; }
+html[data-table-density='SPACIOUS'] .ant-table-thead > tr > th,
+html[data-table-density='SPACIOUS'] .ant-table-tbody > tr > td { padding: 17px 18px !important; }
+html[data-table-zebra='false'] .ant-table-tbody > tr > td { background: var(--app-surface) !important; }
+html[data-sticky-table-header='true'] .ant-table-thead { position: sticky; top: 0; z-index: 4; }
+
+html[data-card-shadow='NONE'] .visual-surface,
+html[data-card-shadow='NONE'] .report-surface,
+html[data-card-shadow='NONE'] .ant-card { box-shadow: none !important; }
+html[data-card-shadow='DEEP'] .visual-surface,
+html[data-card-shadow='DEEP'] .report-surface,
+html[data-card-shadow='DEEP'] .ant-card { box-shadow: 0 22px 55px rgba(2, 6, 23, .22) !important; }
+
+html[data-accent-intensity='SUBTLE'] { --appearance-alpha: .045; }
+html[data-accent-intensity='BALANCED'] { --appearance-alpha: .09; }
+html[data-accent-intensity='VIVID'] { --appearance-alpha: .17; }
+html[data-accent-intensity] .surface-muted,
+html[data-accent-intensity] .surface-soft { background: rgb(var(--brand-rgb) / var(--appearance-alpha)) !important; }
+
+.visual-surface,
+.visual-metric {
+  padding: var(--ui-card-padding);
+  border: var(--ui-border-width) solid var(--app-card-border);
+  border-radius: var(--ui-card-radius);
+  background: var(--app-card-bg);
+  box-shadow: var(--glass-shadow);
+}
+
+.metric-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+html[data-metric-columns='TWO'] .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+html[data-metric-columns='THREE'] .metric-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+html[data-metric-columns='FOUR'] .metric-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+html[data-motion='REDUCED'] *,
+html[data-motion='REDUCED'] *::before,
+html[data-motion='REDUCED'] *::after {
+  animation-duration: .001ms !important;
+  animation-iteration-count: 1 !important;
+  scroll-behavior: auto !important;
+  transition-duration: .001ms !important;
+}
+
+html[data-contrast-mode='HIGH'] { --app-card-border: rgb(var(--brand-rgb) / .55); --table-border-color: rgb(var(--brand-rgb) / .55); }
+html[data-contrast-mode='HIGH'][data-theme='dark'] { --foreground-rgb: 255, 255, 255; --muted-foreground-rgb: 226, 232, 240; }
+html[data-show-background-pattern='false'] body::before { display: none !important; }
+html[data-radius='COMPACT'] .rounded-xl,
+html[data-radius='COMPACT'] .rounded-2xl,
+html[data-radius='COMPACT'] .rounded-3xl { border-radius: var(--ui-card-radius) !important; }
+
+html[data-content-width='FOCUSED'] .app-content-shell { max-width: 1180px; margin-inline: auto; }
+html[data-content-width='WIDE'] .app-content-shell { max-width: 1480px; margin-inline: auto; }
+html[data-content-width='FULL'] .app-content-shell { max-width: none; }
+
+@media (max-width: 900px) {
+  html[data-metric-columns] .metric-grid { grid-template-columns: 1fr; }
+}
+
+.motion-reduced *,
+.motion-reduced *::before,
+.motion-reduced *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  scroll-behavior: auto !important;
+  transition-duration: 0.001ms !important;
+}
+
+.content-boxed .app-content-shell {
+  max-width: var(--app-content-max-width);
+  margin-inline: auto;
+}
+
+.ant-typography,
+.ant-menu,
+.ant-btn,
+.ant-input,
+.ant-input-number,
+.ant-select,
+.ant-modal,
+.ant-table,
+.ant-form,
+.ant-dropdown,
+.ant-popover,
+.ant-picker,
+.ant-tag,
+.ant-segmented,
+[class^="ant-"] {
+  font-size: var(--app-font-size) !important;
+}
+
+body.dark .ant-typography,
+body.dark .ant-table,
+body.dark .ant-table-cell,
+body.dark .ant-form-item-label>label,
+body.dark .ant-modal-title,
+body.dark .ant-popover-title,
+body.dark .ant-drawer-title,
+body.dark .ant-dropdown-menu-title-content,
+body.dark .ant-select-selection-item,
+body.dark .ant-input,
+body.dark .ant-input-number-input,
+body.dark .ant-picker-input>input,
+body.dark .ant-segmented-item-label {
+  color: rgb(var(--foreground-rgb)) !important;
+}
+
+body.dark .ant-typography.ant-typography-secondary,
+body.dark .ant-empty-description,
+body.dark .ant-breadcrumb,
+body.dark .ant-table-column-sorter {
+  color: rgb(var(--muted-foreground-rgb)) !important;
+}
+
+body.dark .ant-card,
+body.dark .ant-modal-content,
+body.dark .ant-popover-inner,
+body.dark .ant-drawer-content,
+body.dark .ant-dropdown-menu,
+body.dark .ant-select-dropdown,
+body.dark .ant-picker-dropdown .ant-picker-panel-container,
+body.dark .ant-segmented {
+  background: var(--app-surface) !important;
+  border-color: var(--app-card-border) !important;
+  color: rgb(var(--foreground-rgb)) !important;
+}
+
+body.dark .ant-input,
+body.dark .ant-input-number,
+body.dark .ant-input-affix-wrapper,
+body.dark .ant-select-selector,
+body.dark .ant-picker {
+  background: var(--app-surface) !important;
+  border-color: rgba(148, 163, 184, 0.28) !important;
+  color: rgb(var(--foreground-rgb)) !important;
+}
+
+body.dark .ant-input::placeholder,
+body.dark .ant-picker-input>input::placeholder {
+  color: rgba(var(--muted-foreground-rgb), 0.72) !important;
+}
+
+.fanum,
+.ant-input-number input,
+.ant-picker input,
+.ant-statistic-content-value,
+.ant-table-cell,
+[data-persian-numbers],
+*[class*="number"],
+*[class*="date"],
+*[class*="count"] {
+  font-family: var(--app-font-family) !important;
+}
+
+body.lang-en .fanum,
+body.lang-fr .fanum,
+body.lang-en .ant-input-number input,
+body.lang-fr .ant-input-number input,
+body.lang-en .ant-picker input,
+body.lang-fr .ant-picker input,
+body.lang-en .ant-statistic-content-value,
+body.lang-fr .ant-statistic-content-value,
+body.lang-en .ant-table-cell,
+body.lang-fr .ant-table-cell,
+body.lang-en [data-persian-numbers],
+body.lang-fr [data-persian-numbers],
+body.lang-en *[class*="number"],
+body.lang-fr *[class*="number"],
+body.lang-en *[class*="date"],
+body.lang-fr *[class*="date"],
+body.lang-en *[class*="count"],
+body.lang-fr *[class*="count"] {
+  font-family: var(--app-font-family) !important;
+}
+
+/* ====================================================================== */
+/* ۵. المان‌های جانبی و بهینه‌سازی فرم‌ها                                    */
+/* ====================================================================== */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+  -webkit-text-fill-color: inherit !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+.ant-layout,
+.ant-layout-content {
+  background: transparent !important;
+}
+
+.app-dashboard-content,
+.app-content-shell {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.ant-layout-header {
+  background: var(--ant-layout-header) !important;
+  backdrop-filter: blur(5px);
+  border-bottom: var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.ant-layout-sider {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(var(--color-primary-rgb), 0.14), transparent 36%),
+    var(--sider-bg) !important;
+  backdrop-filter: blur(5px);
+  border-inline-end: var(--glass-border);
+  transition: background-color 0.3s ease;
+}
+
+/* ====================================================================== */
+/* ۶. استایل‌های جدول بدون لگ اسکرول                                        */
+/* ====================================================================== */
+.ant-table {
+  background-color: var(--ant-table-bg) !important;
+  border-radius: var(--app-radius);
+  overflow: auto;
+  border: 1px solid var(--table-border-color);
+  box-shadow: var(--glass-shadow);
+  color: rgb(var(--foreground-rgb)) !important;
+  will-change: transform;
+}
+
+.kg-card {
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--app-radius);
+  box-shadow: var(--glass-shadow);
+  color: rgb(var(--foreground-rgb));
+}
+
+.kg-muted {
+  color: var(--portal-muted, rgb(var(--muted-foreground-rgb)));
+}
+
+.kg-card .ant-typography,
+.visual-surface .ant-typography {
+  color: var(--portal-ink, rgb(var(--foreground-rgb)));
+}
+
+.ant-table-tbody>tr:nth-child(odd)>td {
+  background-color: var(--table-row-odd-bg) !important;
+  color: rgb(var(--foreground-rgb)) !important;
+}
+
+.ant-table-tbody>tr:nth-child(even)>td {
+  background-color: var(--table-row-even-bg) !important;
+  color: rgb(var(--foreground-rgb)) !important;
+}
+
+.ant-table-tbody>tr:hover>td {
+  background-color: var(--ant-table-hover-bg) !important;
+}
+
+.ant-table-thead>tr>th {
+  background-color: var(--ant-table-thead-bg) !important;
+  color: var(--ant-table-thead-color) !important;
+  font-weight: bold;
+  border-bottom: 1px solid var(--table-border-color) !important;
+}
+
+.ant-table-thead>tr>th::before {
+  background-color: var(--table-border-color) !important;
+}
+
+.ant-table-wrapper .ant-table-column-title,
+.ant-table-wrapper .ant-table-cell,
+.ant-table-wrapper .ant-table-thead>tr>th,
+.ant-table-wrapper .ant-table-tbody>tr>td,
+.ant-table-wrapper .ant-table-summary>tr>td {
+  color: rgb(var(--foreground-rgb)) !important;
+}
+
+.ant-table-wrapper .ant-table-thead>tr>th,
+.kg-table-header {
+  background:
+    linear-gradient(180deg, rgba(var(--color-primary-rgb), 0.1), transparent),
+    var(--ant-table-thead-bg) !important;
+  color: var(--ant-table-thead-color) !important;
+}
+
+.ant-table-container,
+.ant-table-content,
+.ant-table-body,
+.ant-table-placeholder,
+.ant-table-expanded-row>td {
+  background: var(--ant-table-bg) !important;
+  color: rgb(var(--foreground-rgb)) !important;
+}
+
+.ant-table-placeholder .ant-empty-description {
+  color: rgb(var(--muted-foreground-rgb)) !important;
+}
+
+.ant-table-tbody>tr>td,
+.ant-table-thead>tr>th {
+  padding: var(--app-table-cell-padding) !important;
+}
+
+.ant-btn,
+.ant-input,
+.ant-input-number,
+.ant-input-affix-wrapper,
+.ant-select-selector,
+.ant-picker,
+.ant-segmented,
+.ant-modal-content,
+.ant-popover-inner,
+.ant-dropdown-menu,
+.ant-tag {
+  border-radius: var(--app-radius) !important;
+}
+
+.ant-btn:not(.ant-btn-circle),
+.ant-input,
+.ant-input-affix-wrapper,
+.ant-picker,
+.ant-select-selector {
+  min-height: var(--app-control-height) !important;
+}
+
+.ant-btn-primary {
+  background: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 6px 14px rgba(var(--color-primary-rgb), 0.18) !important;
+}
+
+.ant-btn-primary:hover {
+  background: var(--color-accent) !important;
+  border-color: var(--color-accent) !important;
+}
+
+.ant-slider-track,
+.ant-slider-handle::after {
+  background-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 2px var(--color-primary) !important;
+}
+
+.login-auth-input.ant-input,
+.login-auth-input.ant-input-affix-wrapper,
+.login-auth-input.ant-input-password {
+  height: 48px !important;
+  min-height: 48px !important;
+  direction: rtl !important;
+  text-align: right !important;
+  box-sizing: border-box !important;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease !important;
+}
+
+.login-auth-input.ant-input {
+  display: block !important;
+  padding-block: 0 !important;
+  line-height: 46px !important;
+}
+
+.login-auth-input.ant-input-affix-wrapper,
+.login-auth-input.ant-input-password {
+  display: inline-flex !important;
+  align-items: center !important;
+  padding-block: 0 !important;
+}
+
+.login-auth-input.ant-input-affix-wrapper > input.ant-input,
+.login-auth-input.ant-input-affix-wrapper .ant-input,
+.login-auth-input.ant-input-password > input.ant-input {
+  display: block !important;
+  flex: 1 1 auto !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  padding-block: 0 !important;
+  margin: 0 !important;
+  direction: rtl !important;
+  text-align: right !important;
+  line-height: 46px !important;
+  background: transparent !important;
+  color: inherit !important;
+  box-shadow: none !important;
+}
+
+.login-auth-input.ant-input::placeholder,
+.login-auth-input.ant-input-affix-wrapper input.ant-input::placeholder,
+.login-auth-input.ant-input-password input.ant-input::placeholder {
+  direction: rtl !important;
+  text-align: right !important;
+  line-height: 46px !important;
+  color: rgba(113, 113, 122, 0.64) !important;
+}
+
+.login-auth-input.ant-input-affix-wrapper .ant-input-prefix,
+.login-auth-input.ant-input-affix-wrapper .ant-input-suffix,
+.login-auth-input.ant-input-password .ant-input-prefix,
+.login-auth-input.ant-input-password .ant-input-suffix {
+  display: inline-flex !important;
+  flex: 0 0 auto;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100% !important;
+  margin-block: 0 !important;
+  line-height: 1 !important;
+}
+
+.login-auth-input.ant-input-affix-wrapper .ant-input-prefix,
+.login-auth-input.ant-input-password .ant-input-prefix {
+  margin-inline: 0 10px !important;
+}
+
+.login-auth-input.ant-input-affix-wrapper .ant-input-suffix,
+.login-auth-input.ant-input-password .ant-input-suffix {
+  margin-inline: 10px 0 !important;
+}
+
+.login-auth-input.ant-input:hover,
+.login-auth-input.ant-input-affix-wrapper:hover {
+  border-color: rgba(var(--color-primary-rgb), 0.72) !important;
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.08) !important;
+}
+
+.login-auth-input.ant-input:focus,
+.login-auth-input.ant-input-focused,
+.login-auth-input.ant-input-affix-wrapper-focused {
+  border-color: rgb(var(--color-primary-rgb)) !important;
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.18) !important;
+}
+
+.login-auth-input.ant-input-affix-wrapper .ant-input,
+.login-auth-input.ant-input-affix-wrapper input.ant-input {
+  background: transparent !important;
+  color: inherit !important;
+}
+
+.login-auth-input .ant-input-prefix,
+.login-auth-input .ant-input-suffix,
+.login-auth-input .ant-input-password-icon,
+.login-auth-input .anticon {
+  color: rgba(113, 113, 122, 0.78) !important;
+  transition: color 180ms ease !important;
+}
+
+.login-auth-input.ant-input:hover .anticon,
+.login-auth-input.ant-input-affix-wrapper:hover .anticon,
+.login-auth-input.ant-input-affix-wrapper-focused .anticon {
+  color: rgb(var(--color-primary-rgb)) !important;
+}
+
+body.dark .login-auth-input.ant-input,
+body.dark .login-auth-input.ant-input-affix-wrapper {
+  background: rgba(255, 255, 255, 0.075) !important;
+  border-color: rgba(255, 255, 255, 0.16) !important;
+  color: #ffffff !important;
+}
+
+body.dark .login-auth-input.ant-input:hover,
+body.dark .login-auth-input.ant-input-affix-wrapper:hover {
+  background: rgba(255, 255, 255, 0.105) !important;
+  border-color: rgba(var(--color-primary-rgb), 0.78) !important;
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.12) !important;
+}
+
+body.dark .login-auth-input.ant-input:focus,
+body.dark .login-auth-input.ant-input-focused,
+body.dark .login-auth-input.ant-input-affix-wrapper-focused {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgb(var(--color-primary-rgb)) !important;
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.24) !important;
+}
+
+body.dark .login-auth-input.ant-input-affix-wrapper .ant-input,
+body.dark .login-auth-input.ant-input-affix-wrapper input.ant-input,
+body.dark .login-auth-input.ant-input {
+  background: transparent !important;
+  color: #ffffff !important;
+  caret-color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body.dark .login-auth-input.ant-input::placeholder,
+body.dark .login-auth-input.ant-input-affix-wrapper input.ant-input::placeholder {
+  color: rgba(244, 244, 245, 0.68) !important;
+  -webkit-text-fill-color: rgba(244, 244, 245, 0.68) !important;
+}
+
+body.dark .login-auth-input .ant-input-prefix,
+body.dark .login-auth-input .ant-input-suffix,
+body.dark .login-auth-input .ant-input-password-icon,
+body.dark .login-auth-input .anticon {
+  color: rgba(244, 244, 245, 0.7) !important;
+}
+
+body.dark .login-auth-input.ant-input:hover .anticon,
+body.dark .login-auth-input.ant-input-affix-wrapper:hover .anticon,
+body.dark .login-auth-input.ant-input-affix-wrapper-focused .anticon {
+  color: rgb(var(--color-primary-rgb)) !important;
+}
+
+body.dark .login-auth-input input:-webkit-autofill,
+body.dark .login-auth-input.ant-input:-webkit-autofill {
+  -webkit-text-fill-color: #ffffff !important;
+  caret-color: #ffffff !important;
+  box-shadow: 0 0 0 1000px rgba(255, 255, 255, 0.08) inset !important;
+}
+
+.login-submit-button.ant-btn-primary {
+  background: rgb(var(--color-primary-rgb)) !important;
+  border-color: rgb(var(--color-primary-rgb)) !important;
+  color: #ffffff !important;
+  transition:
+    filter 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease !important;
+}
+
+.login-submit-button.ant-btn-primary:hover,
+.login-submit-button.ant-btn-primary:focus-visible {
+  background: rgb(var(--color-primary-rgb)) !important;
+  border-color: rgb(var(--color-primary-rgb)) !important;
+  color: #ffffff !important;
+  filter: brightness(0.94);
+  box-shadow: 0 10px 22px rgba(var(--color-primary-rgb), 0.28) !important;
+}
+
+.login-submit-button.ant-btn-primary:active {
+  transform: translateY(1px);
+  filter: brightness(0.9);
+}
+
+.app-header-icon-button {
+  width: 42px !important;
+  height: 42px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: var(--app-header-control-color) !important;
+  background: var(--app-header-control-bg) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.12);
+}
+
+.app-header-icon-button:hover {
+  color: var(--color-primary) !important;
+  background: var(--app-header-control-hover) !important;
+  transform: translateY(-1px);
+}
+
+.app-brand-lockup {
+  min-width: 0;
+  max-width: min(44vw, 360px);
+  color: var(--app-header-control-color);
+}
+
+.app-brand-mark {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  color: #ffffff;
+  background:
+    linear-gradient(135deg, rgba(var(--color-primary-rgb), 0.98), rgba(var(--color-accent-rgb), 0.92));
+  box-shadow: 0 14px 30px rgba(var(--color-primary-rgb), 0.28);
+}
+
+.app-brand-title,
+.app-brand-caption {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.app-brand-title {
+  color: var(--brand-ink-strong, var(--app-header-control-color)) !important;
+  font-weight: 850;
+  font-size: 0.95rem;
+}
+
+.app-brand-caption {
+  color: var(--brand-ink, var(--app-header-control-color)) !important;
+  font-size: 0.72rem;
+  opacity: 0.78;
+}
+
+body.dark .app-brand-caption {
+  color: var(--brand-200, #e2e8f0) !important;
+  opacity: 0.92;
+}
+
+.app-user-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 220px;
+  padding: 6px 12px;
+  border: 1px solid var(--app-card-border);
+  border-radius: 999px;
+  background: var(--app-header-control-bg);
+  color: var(--app-header-control-color);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.1);
+}
+
+.app-user-chip span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.report-surface {
+  background: var(--app-card-bg) !important;
+  color: rgb(var(--foreground-rgb)) !important;
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--app-radius);
+  box-shadow: var(--glass-shadow);
+}
+
+.report-muted {
+  color: rgb(var(--muted-foreground-rgb)) !important;
+}
+
+/* ====================================================================== */
+/* ۷. منوی راست‌چین (RTL Custom Menu) – نسخه ساده‌شده و رفع شده           */
+/* ====================================================================== */
+/* پایه منو */
+.custom-menu {
+  background: transparent !important;
+  border: none !important;
+  color: var(--color-menu-text) !important;
+  transition: all 0.2s ease;
+  padding: 8px;
+}
+
+/* آیتم‌ها و عنوان زیرمنوها */
+.custom-menu .ant-menu-item,
+.custom-menu .ant-menu-submenu-title {
+  margin: 4px 8px !important;
+  height: var(--app-menu-item-height) !important;
+  line-height: var(--app-menu-item-height) !important;
+  border-radius: var(--app-radius) !important;
+  color: var(--color-menu-text) !important;
+  font-weight: 650 !important;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* هاور */
+.custom-menu .ant-menu-item:hover,
+.custom-menu .ant-menu-submenu-title:hover {
+  background: rgba(var(--color-primary-rgb), 0.1) !important;
+  color: var(--color-primary) !important;
+  transform: translateX(-2px);
+}
+
+body.dark .custom-menu .ant-menu-item:hover,
+body.dark .custom-menu .ant-menu-submenu-title:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #ffffff !important;
+}
+
+/* آیتم انتخاب شده */
+.custom-menu .ant-menu-item-selected {
+  background:
+    linear-gradient(90deg, rgba(var(--color-primary-rgb), 0.18), rgba(var(--color-accent-rgb), 0.08)) !important;
+  color: var(--color-primary) !important;
+  font-weight: 800 !important;
+  border-inline-end: 3px solid var(--color-primary) !important;
+  box-shadow: inset 0 0 0 1px rgba(var(--color-primary-rgb), 0.14);
+}
+
+/* حذف افکت‌های اضافی قدیمی (ستاره، نبض و ...) */
+.custom-menu .ant-menu-item-selected::before,
+.custom-menu .ant-menu-item-selected::after {
+  display: none !important;
+}
+
+/* آیکون‌ها */
+.custom-menu .ant-menu-item-icon {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: calc(var(--app-radius) - 2px);
+  background: rgba(var(--color-primary-rgb), 0.09);
+  font-size: 16px !important;
+  color: currentColor !important;
+  transition: transform 0.2s;
+}
+
+.custom-menu .ant-menu-item:hover .ant-menu-item-icon {
+  transform: scale(1.1);
+}
+
+/* زیرمنوهای باز (inline) */
+.custom-menu .ant-menu-sub.ant-menu-inline {
+  background: rgba(var(--color-primary-rgb), 0.045) !important;
+  border: 1px solid var(--color-menu-submenu-border) !important;
+  border-inline-end: 1px solid var(--color-menu-submenu-border) !important;
+  border-radius: var(--app-radius);
+  margin: 4px 8px !important;
+  padding: 5px 0 !important;
+}
+
+.custom-menu .ant-menu-sub.ant-menu-inline .ant-menu-item {
+  margin: 2px 8px 2px 16px !important;
+  height: calc(var(--app-menu-item-height) - 6px) !important;
+  line-height: calc(var(--app-menu-item-height) - 6px) !important;
+  color: var(--color-menu-muted) !important;
+}
+
+/* زیرمنوهای شناور (popup) */
+.ant-menu-submenu-popup .ant-menu {
+  background: var(--color-menu-submenu-bg) !important;
+  border-radius: var(--app-radius) !important;
+  border: 1px solid var(--color-menu-submenu-border) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+  backdrop-filter: blur(4px);
+}
+
+.ant-menu-submenu-popup .ant-menu-item {
+  color: var(--color-menu-text) !important;
+}
+
+.ant-menu-submenu-popup .ant-menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  color: var(--color-menu-gold) !important;
+}
+
+/* پشتیبانی از آیتم‌های dimmed (غیرفعال) */
+.custom-menu .ant-menu-item.dimmed,
+.custom-menu .ant-menu-item.dimmed>.ant-menu-title-content {
+  opacity: 0.6;
+  filter: blur(0.3px);
+  pointer-events: none;
+}
+
+/* RTL پشتیبانی */
+.ant-menu-rtl,
+.custom-menu[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+.ant-menu-rtl .ant-menu-item,
+.ant-menu-rtl .ant-menu-submenu-title,
+.custom-menu[dir="rtl"] .ant-menu-item,
+.custom-menu[dir="rtl"] .ant-menu-submenu-title {
+  padding-right: 24px !important;
+  padding-left: 16px !important;
+}
+
+/* اسکرول باریک */
+.custom-menu::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-menu::-webkit-scrollbar-thumb {
+  background: var(--color-menu-gold);
+  border-radius: 10px;
+}
+
+/* ====================================================================== */
+/* ۸. یوتیلیتی‌های اضافی                                                  */
+/* ====================================================================== */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .font-fanum {
+    font-family: var(--app-font-family) !important;
+  }
+}
+
+.ant-upload-wrapper,
+.ant-upload,
+.ant-upload-select,
+.ant-upload-select-picture-card {
+  width: 100% !important;
+}
+
+.ant-upload-wrapper .ant-upload {
+  display: block !important;
+}
+
+/* ====================================================================== */
+/* ۹. سوییچ سفارشی روشن / تاریک                                          */
+/* ====================================================================== */
+.portal-theme-mode {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.portal-theme-mode:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.portal-theme-mode-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  width: 64px;
+  height: 32px;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(var(--color-primary-rgb), 0.14);
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.12);
+  overflow: hidden;
+}
+
+.portal-theme-mode-icon {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--portal-muted, #64748b);
+  font-size: 13px;
+  transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+.portal-theme-mode-knob {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  z-index: 1;
+  width: 26px;
+  border-radius: 999px;
+  background: var(--brand-gradient, linear-gradient(135deg, var(--color-primary), var(--color-accent)));
+  box-shadow: 0 6px 14px rgba(var(--color-primary-rgb), 0.28);
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.portal-theme-mode.is-light .portal-theme-mode-knob {
+  transform: translateX(0);
+}
+
+.portal-theme-mode.is-dark .portal-theme-mode-knob {
+  transform: translateX(32px);
+}
+
+.portal-theme-mode.is-light .portal-theme-mode-sun,
+.portal-theme-mode.is-dark .portal-theme-mode-moon {
+  color: #fff;
+}
+
+.portal-theme-mode.is-light .portal-theme-mode-moon,
+.portal-theme-mode.is-dark .portal-theme-mode-sun {
+  opacity: 0.55;
+}
+
+[dir='rtl'] .portal-theme-mode.is-light .portal-theme-mode-knob {
+  transform: translateX(32px);
+}
+
+[dir='rtl'] .portal-theme-mode.is-dark .portal-theme-mode-knob {
+  transform: translateX(0);
+}
+
+body.dark .portal-theme-mode-track {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+/* Form controls: visible borders (select / checkbox / picker) */
+.app-form-select .ant-select-selector,
+.ant-select:not(.ant-select-borderless) .ant-select-selector {
+  border: 1px solid rgba(100, 116, 139, 0.55) !important;
+  background: var(--app-surface, #fff) !important;
+  opacity: 1 !important;
+  box-shadow: none !important;
+  color: rgb(var(--foreground-rgb)) !important;
+}
+
+.app-form-select.ant-select-focused .ant-select-selector,
+.app-form-select.ant-select-open .ant-select-selector,
+.ant-select-focused:not(.ant-select-borderless) .ant-select-selector {
+  border-color: var(--color-primary) !important;
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.15) !important;
+}
+
+.app-form-select.ant-select-status-error .ant-select-selector,
+.ant-select-status-error .ant-select-selector {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.15) !important;
+}
+
+.app-form-select-item .ant-form-item-explain-error {
+  color: #dc2626 !important;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.app-form-checkbox {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.app-form-checkbox__control {
+  opacity: 1 !important;
+}
+
+.app-form-checkbox__control .ant-checkbox-inner {
+  border: 1.5px solid rgba(100, 116, 139, 0.7) !important;
+  background: var(--app-surface, #fff) !important;
+  opacity: 1 !important;
+  width: 18px !important;
+  height: 18px !important;
+}
+
+.app-form-checkbox__control .ant-checkbox-checked .ant-checkbox-inner {
+  background: var(--color-primary) !important;
+  border-color: var(--color-primary) !important;
+}
+
+.app-form-checkbox__label,
+.app-form-label {
+  color: rgb(var(--foreground-rgb)) !important;
+  opacity: 1 !important;
+}
+
+.app-form-checkbox--error .ant-checkbox-inner,
+.app-form-checkbox__control.ant-checkbox-wrapper-status-error .ant-checkbox-inner {
+  border-color: #ef4444 !important;
+}
+
+.app-form-checkbox__error {
+  color: #dc2626;
+  font-size: 12px;
+}
+
+.ant-table-thead > tr > th {
+  white-space: nowrap !important;
+  padding-inline: 14px !important;
+  min-width: 72px;
+}
+
+.ant-table-thead > tr > th .ant-table-column-title {
+  white-space: nowrap !important;
+}
+
+/* Common create/edit forms */
+.app-common-form {
+  background: var(--app-card-bg, #fff);
+  color: rgb(var(--foreground-rgb));
+  border: 1px solid var(--app-card-border, rgba(148, 163, 184, 0.25));
+}
+
+.app-common-form__header,
+.app-common-form__footer {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--color-primary-rgb), 0.08),
+    transparent 55%
+  ),
+    var(--app-surface-alt, #f3f5f8);
+  border-color: var(--app-card-border, rgba(148, 163, 184, 0.25)) !important;
+}
+
+.app-common-form__title,
+.app-common-form__body,
+.app-common-form__body h3,
+.app-common-form__body .text-primary-600 {
+  color: rgb(var(--foreground-rgb));
+}
+
+.app-upload-dropzone {
+  background: var(--app-surface, #fff) !important;
+}
+
+.app-upload-dropzone__title {
+  color: rgb(var(--foreground-rgb)) !important;
+}
+
+.app-upload-dropzone__muted {
+  color: rgb(var(--muted-foreground-rgb)) !important;
+}
+
+/* Rich text editor (notificationCreate and others) */
+.app-rich-editor,
+.app-rich-editor--loading {
+  background: var(--app-card-bg, #fff);
+  border-color: var(--app-card-border, rgba(148, 163, 184, 0.28)) !important;
+  color: rgb(var(--foreground-rgb));
+}
+
+.app-rich-editor__toolbar,
+.app-rich-editor__statusbar {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--color-primary-rgb), 0.08),
+    transparent 50%
+  ),
+    var(--app-surface-alt, #f8fafc);
+  border-color: var(--app-card-border, rgba(148, 163, 184, 0.28)) !important;
+}
+
+.app-rich-editor__canvas,
+.app-rich-editor__content,
+.app-rich-editor .ProseMirror {
+  background: var(--app-surface, #fff) !important;
+  color: rgb(var(--foreground-rgb)) !important;
+}
+
+.app-rich-editor__muted {
+  color: rgb(var(--muted-foreground-rgb)) !important;
+}
+
+.app-rich-editor__tool-group {
+  background: var(--app-surface, #fff) !important;
+  border-color: var(--app-card-border, rgba(148, 163, 184, 0.35)) !important;
+  color: rgb(var(--foreground-rgb)) !important;
+}
+
+.app-rich-editor__tool-btn:hover {
+  background: var(--app-surface, #fff);
+  border-color: var(--app-card-border, rgba(148, 163, 184, 0.4));
+}
+
+body.dark .app-form-select .ant-select-selector,
+body.dark .ant-select:not(.ant-select-borderless) .ant-select-selector {
+  background: var(--app-surface) !important;
+  border-color: rgba(148, 163, 184, 0.45) !important;
+  color: rgb(var(--foreground-rgb)) !important;
+}
+
+body.dark .app-form-checkbox__control .ant-checkbox-inner {
+  background: var(--app-surface) !important;
+  border-color: rgba(148, 163, 184, 0.55) !important;
+}
+
+body.dark .app-common-form,
+body.dark .app-rich-editor,
+body.dark .app-rich-editor--loading,
+body.dark .app-upload-dropzone {
+  background: var(--app-surface) !important;
+  border-color: rgba(148, 163, 184, 0.28) !important;
+}
+
+body.dark .app-common-form__header,
+body.dark .app-common-form__footer,
+body.dark .app-rich-editor__toolbar,
+body.dark .app-rich-editor__statusbar {
+  background: rgba(15, 23, 42, 0.92) !important;
+  border-color: rgba(148, 163, 184, 0.22) !important;
+}
+
+body.dark .app-rich-editor__canvas,
+body.dark .app-rich-editor__content,
+body.dark .app-rich-editor .ProseMirror,
+body.dark .app-rich-editor__tool-group {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+  border-color: rgba(148, 163, 184, 0.28) !important;
+}
+
+body.dark .app-rich-editor .ProseMirror p,
+body.dark .app-rich-editor .ProseMirror h1,
+body.dark .app-rich-editor .ProseMirror h2,
+body.dark .app-rich-editor .ProseMirror h3,
+body.dark .app-rich-editor .ProseMirror li,
+body.dark .app-rich-editor .ProseMirror span {
+  color: #f8fafc !important;
+}
+
+body.dark .app-upload-dropzone__title,
+body.dark .app-common-form__title,
+body.dark .app-form-label,
+body.dark .app-common-form__body h3 {
+  color: #f8fafc !important;
+}
+
+body.dark .app-upload-dropzone__muted,
+body.dark .app-rich-editor__muted {
+  color: #cbd5e1 !important;
+}
+
+body.dark .app-rich-editor button,
+body.dark .app-rich-editor__tool-group button,
+body.dark .app-rich-editor__tool-group svg {
+  color: #e2e8f0 !important;
+}
+
+body.dark .text-gray-700,
+body.dark .text-gray-600,
+body.dark .text-gray-900,
+body.dark .text-neutral-800,
+body.dark .text-neutral-900 {
+  color: #e2e8f0 !important;
+}
+
+html[data-theme='dark'] .app-common-form,
+html[data-theme='dark'] .app-rich-editor,
+html[data-theme='dark'] .app-upload-dropzone {
+  background: var(--app-surface) !important;
+}
+
+.app-form-label,
+.app-form-section-title {
+  color: rgb(var(--form-label-color, var(--foreground-rgb))) !important;
+}
+
+.app-form-section-title {
+  color: var(--color-primary) !important;
+}
+
+body.dark .app-form-section-title {
+  color: var(--brand-200, #d1baf0) !important;
+}
+
+.app-form-divider {
+  border: 0;
+  border-top: 1px solid var(--app-card-border, rgba(148, 163, 184, 0.28));
+  opacity: 1;
+}
+
+.app-form-control.ant-input,
+.app-form-control.ant-input-affix-wrapper,
+.app-form-control.ant-input-number,
+.app-form-datepicker.ant-picker,
+.ant-input.app-form-control,
+.ant-picker.app-form-datepicker {
+  background: var(--ant-input, var(--app-surface)) !important;
+  border-color: var(--input-border, rgba(100, 116, 139, 0.55)) !important;
+  color: rgb(var(--foreground-rgb)) !important;
+}
+
+.app-form-control.ant-input::placeholder,
+.app-form-datepicker .ant-picker-input > input::placeholder {
+  color: rgb(var(--muted-foreground-rgb)) !important;
+}
+
+body.dark .app-form-control.ant-input,
+body.dark .app-form-control.ant-input-affix-wrapper,
+body.dark .app-form-datepicker.ant-picker,
+body.dark .ant-input,
+body.dark .ant-input-affix-wrapper,
+body.dark .ant-input-number,
+body.dark .ant-picker,
+body.dark textarea.ant-input {
+  background: var(--app-surface) !important;
+  border-color: rgba(148, 163, 184, 0.45) !important;
+  color: #f8fafc !important;
+}
+
+body.dark .ant-form-item-label > label,
+body.dark .app-form-label,
+body.dark .app-common-form__body label {
+  color: #f1f5f9 !important;
+}
+
+body.dark .ant-select-selection-placeholder,
+body.dark .ant-picker-input > input::placeholder,
+body.dark .ant-input::placeholder {
+  color: #94a3b8 !important;
+}
+
+body.dark .ant-picker-dropdown .ant-picker-panel-container,
+body.dark .ant-picker-panel,
+body.dark .ant-picker-footer,
+body.dark .ant-picker-header,
+body.dark .ant-picker-content th,
+body.dark .ant-picker-cell {
+  background: #0f172a !important;
+  color: #e2e8f0 !important;
+  border-color: rgba(148, 163, 184, 0.22) !important;
+}
+
+body.dark .app-common-form hr,
+body.dark .app-form-divider {
+  border-color: rgba(148, 163, 184, 0.28) !important;
+}
+
+body.dark .app-common-form .text-primary-600 {
+  color: var(--brand-200, #d1baf0) !important;
+}
+
+
+
+
