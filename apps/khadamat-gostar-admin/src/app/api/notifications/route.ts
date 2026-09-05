@@ -1,12 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const getBackendUrl = (unitId: string) => {
+const getBackendUrl = () => {
   const baseUrl =
     process.env.NOTIFICATION_BASE_URL ?? 'https://portal2.kh-poshtibani.ir/';
-  const url = new URL('api/1/Notification/GetNotificationByUnitId', baseUrl);
-  url.searchParams.set('unitId', unitId);
 
-  return url.toString();
+  return new URL('api/1​/Notification​/index', baseUrl).toString();
 };
 
 const readBackendData = async (response: Response) => {
@@ -30,18 +28,8 @@ const getErrorMessage = (data: any, fallback: string) =>
   fallback;
 
 export async function GET(request: NextRequest) {
-  console.log('b','aaaaaaaaaa')
-
+    console.log('two')
   try {
-    const unitId = request.nextUrl.searchParams.get('unitId')?.trim();
-
-    if (!unitId) {
-      return NextResponse.json(
-        { message: 'unitId is required' },
-        { status: 400 },
-      );
-    }
-
     const token = request.cookies.get('token')?.value;
     const headers = new Headers({
       accept: 'application/json',
@@ -51,7 +39,7 @@ export async function GET(request: NextRequest) {
       headers.set('Authorization', `Bearer ${token}`);
     }
 
-    const backendResponse = await fetch(getBackendUrl(unitId), {
+    const backendResponse = await fetch(getBackendUrl(), {
       method: 'GET',
       headers,
       cache: 'no-store',
@@ -60,7 +48,7 @@ export async function GET(request: NextRequest) {
 
     if (!backendResponse.ok) {
       return NextResponse.json(
-        { message: getErrorMessage(data, 'Notification by unit failed') },
+        { message: getErrorMessage(data, 'NotificationPanel active failed') },
         { status: backendResponse.status },
       );
     }
@@ -68,7 +56,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(typeof data === 'string' ? { info: data } : data);
   } catch (error: any) {
     return NextResponse.json(
-      { message: error?.message ?? 'Notification by unit failed' },
+      { message: error?.message ?? 'NotificationPanel active failed' },
       { status: 500 },
     );
   }

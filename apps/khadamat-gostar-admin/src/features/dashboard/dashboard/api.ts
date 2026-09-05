@@ -61,6 +61,24 @@ export const getNotificationsByUnit = async (
   return unwrapInfo<DashboardNotification>(await response.json());
 };
 
+export const getNotifications = async (
+  unitId: number,
+): Promise<DashboardNotification[]> => {
+  const response = await fetch(`/api/notifications`, {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+    },
+  });
+console.log('oneeeeeeeeeeeeee')
+
+  if (!response.ok) {
+    throw new Error(await readErrorMessage(response, t('dashboardBulletinsLoadError')));
+  }
+
+  return unwrapInfo<DashboardNotification>(await response.json());
+};
+
 export const getDashboardTicketResponses = async (): Promise<
   DashboardTicketResponse[]
 > => {

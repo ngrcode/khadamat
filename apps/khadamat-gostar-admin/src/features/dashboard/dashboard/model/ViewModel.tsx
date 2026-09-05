@@ -13,7 +13,7 @@ import {
 import {
   getActiveNotificationPanels,
   getDashboardTicketResponses,
-  getNotificationsByUnit,
+  getNotifications,
 } from '../api';
 import type {
   AccountInfo,
@@ -92,7 +92,7 @@ export const useDashboardViewModel = () => {
 
     if (unitId) {
       setIsLoadingBulletins(true);
-      void getNotificationsByUnit(unitId)
+      void getNotifications(unitId)
         .then(setBulletins)
         .catch(() => setBulletins([]))
         .finally(() => setIsLoadingBulletins(false));
