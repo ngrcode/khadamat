@@ -70,12 +70,9 @@ export const getNotifications = async (
       accept: 'application/json',
     },
   });
-console.log('oneeeeeeeeeeeeee')
-
   if (!response.ok) {
     throw new Error(await readErrorMessage(response, t('dashboardBulletinsLoadError')));
   }
-
   return unwrapInfo<DashboardNotification>(await response.json());
 };
 

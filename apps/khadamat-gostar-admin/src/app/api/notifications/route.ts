@@ -4,7 +4,7 @@ const getBackendUrl = () => {
   const baseUrl =
     process.env.NOTIFICATION_BASE_URL ?? 'https://portal2.kh-poshtibani.ir/';
 
-  return new URL('api/1​/Notification​/index', baseUrl).toString();
+  return new URL('api/1/Notification/index', baseUrl).toString();
 };
 
 const readBackendData = async (response: Response) => {
@@ -28,9 +28,9 @@ const getErrorMessage = (data: any, fallback: string) =>
   fallback;
 
 export async function GET(request: NextRequest) {
-    console.log('two')
   try {
     const token = request.cookies.get('token')?.value;
+
     const headers = new Headers({
       accept: 'application/json',
     });
@@ -40,13 +40,13 @@ export async function GET(request: NextRequest) {
     }
 
     const backendResponse = await fetch(getBackendUrl(), {
-      method: 'GET',
+      method: 'POST',
       headers,
       cache: 'no-store',
     });
     const data = await readBackendData(backendResponse);
-
     if (!backendResponse.ok) {
+
       return NextResponse.json(
         { message: getErrorMessage(data, 'NotificationPanel active failed') },
         { status: backendResponse.status },
